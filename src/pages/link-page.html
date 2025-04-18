@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> meta}}
+</head>
+
+<body>
+    <style>
+        table{
+            border-collapse: collapse;
+            background: white;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        table thead tr{    height: 60px;background: #36304a;}
+        table thead th{
+            text-align: center;
+            font-family: OpenSans-Regular;
+            font-size: 18px;
+            color: #fff;
+            line-height: 1.2;
+            font-weight: unset;
+        }
+        table tbody tr {
+            height: 50px;
+        }
+        table td, table th {
+            text-align: center;
+            padding: 0 10px;
+        }
+        tbody tr:hover {
+            color: #555555;
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .link-page{
+            width: 1000px;
+        }
+        h1{
+            padding-bottom: 2rem;
+        }
+    </style>
+    <h1>페이지 링크</h1>
+    <div class="link-page">
+        <table>
+            <thead>
+                <tr>
+                    <th>파일</th>
+                    <th>페이지명</th>
+                    <th>생성일</th>
+                    <th>수정일</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each pages}}
+                <tr>
+                    <td><a href="./{{name}}" target="_blank">{{name}}</a></td>
+                    <td>{{title}}</td>
+                    <td>{{created}}</td>
+                    <td>{{updated}}</td>
+                    <td>{{note}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

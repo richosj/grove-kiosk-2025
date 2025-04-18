@@ -1,0 +1,87 @@
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+@use 'sass:map';
+@use 'sass:math';
+
+
+.footer{
+    background-color: #525252;
+    height: 11rem;
+    padding-top: 3.4rem;
+    &-container{
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        width: 1157px;
+        margin: 0 auto;
+    }
+    &-content{
+        position: relative;
+        .footer-link-edu{
+            position: absolute;
+            top: 0;
+            left: -7.5rem;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #fff;
+            height: 2.5rem;
+            width: 6.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #797979;
+            border-radius: 0.5rem;
+        }
+        .copyright{
+            color: #838383;
+            font-size: 1.2rem;
+            padding-left: .5rem;
+            b{font-size: 1.4rem;}
+        }
+    }
+    &-tel{
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.8rem;
+        display: inline-flex;
+        align-items: center;
+        padding-left: 2.8rem;
+        background: url($image-path + '/call.png') no-repeat 0 50%;
+        height: 2.1rem;
+        margin-right: 2.5rem;
+        &:hover{
+            color: #fff;
+        }
+    }
+    &-email{
+        color: #fff;
+        font-size: 1.4rem;
+        padding-left: 2.6rem;
+        background: url($image-path + '/mail.png') no-repeat 0 50%;
+        &:hover{
+            color: #fff;
+        }
+    }
+    &-link-wrap{
+        display: flex;
+        align-items: center;
+        gap: 0 1rem;
+        margin-top: .5rem;
+        .line{
+            display: inline-block;
+            width: 1px;
+            height: 1.2rem;
+            background-color: #fff;
+            opacity: .5;
+        }
+        .footer-link{
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+}

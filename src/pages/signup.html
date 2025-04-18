@@ -1,0 +1,194 @@
+<!-- @pageTitle 메인 -->
+<!-- @pageCreated 2024-04-17 -->
+<!-- @pageUpdated 비고 -->
+<!-- @pageNote 레이아웃 구성 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> meta}}
+</head>
+
+<body>
+    {{> header}}
+
+    <div class="banner-renewal">
+        <div class="visually-hidden">상단 배너 영역</div>
+    </div>
+
+    <main id="content" class="sub-page">
+        <div class="visually-hidden">본문 영역</div>
+        <section class="signup">
+            <div class="sub-page-container">
+                <div class="page-title">
+                    <h2>회원가입</h2>
+                </div>
+                <div class="signup-content">
+                    <form class="signup-form">
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">아이디</strong>
+                                <div class="input-g">
+                                    <input type="text" class="form-input" id="" name="" placeholder="입력">
+                                    <button type="button" class="button gray">중복확인</button>
+                                </div>
+                            </div>
+                            <div class="field"></div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">비밀번호</strong>
+                                <input type="password" class="form-input" id="" name="" placeholder="입력">
+                            </div>
+                            <div class="field">
+                                <strong class="label">비밀번호 확인</strong>
+                                <input type="password" class="form-input" id="" name="" placeholder="입력">
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">성명</strong>
+                                <input type="text" class="form-input" id="" name="" placeholder="입력">
+                            </div>
+                            <div class="field">
+                                <strong class="label">회원구분</strong>
+                                <div class="radio-group">
+                                    <label class="radio-label"><input type="radio" name="memberType" value="employed"><i></i>재직자</label>
+                                    <label class="radio-label"><input type="radio" name="memberType" value="retired"><i></i>퇴직자</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">생년월일</strong>
+                                <input type="text" class="form-input" id="" name="" placeholder="입력">
+                            </div>
+                            <div class="field">
+                                <strong class="label">이메일</strong>
+                                <div class="input-with-email">
+                                    <input type="text" class="form-input email-input" id="" name="" placeholder="입력">
+                                    <span>@</span>
+                                    <input type="text" class="form-input domain-input" id="" name="" placeholder="입력">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">휴대폰 번호</strong>
+                                <div class="input-with-tel">
+                                    <input type="text" class="form-input" name="hp1" maxlength="3">
+                                    <span>-</span>
+                                    <input type="text" class="form-input" name="hp2" maxlength="4">
+                                    <span>-</span>
+                                    <input type="text" class="form-input" name="hp3" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <strong class="label">직위</strong>
+                                <select class="form-input" id="" name="">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">근무부서</strong>
+                                <select class="form-input" id="" name="">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <strong class="label">근무경력</strong>
+                                <select class="form-input" id="" name="">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">소속(기업명)</strong>
+                                <input type="text" class="form-input" id="" name="" placeholder="입력">
+                            </div>
+                            <div class="field">
+                                <strong class="label">사업자등록번호</strong>
+                                <div class="input-g">
+                                    <input type="text" class="form-input" id="" name="" placeholder="입력">
+                                    <button type="button" class="button gray">유효성검증</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">기업분류</strong>
+                                <div class="radio-group">
+                                    <label class="radio-label"><input type="radio" name="corpType" value="public"><i></i>공공</label>
+                                    <label class="radio-label"><input type="radio" name="corpType" value="private"><i></i>민간</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <strong class="label">업종</strong>
+                                <select class="form-input" id="" name="">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <strong class="label">소재지</strong>
+                                <select class="form-input" id="" name="">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <strong class="label">기업규모</strong>
+                                <select class="form-input" id="" name="">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- 동의 -->
+                    <div class="consent">
+                        <div class="consent-header">
+                            <label class="check-label"><input type="checkbox"><i></i> 개인정보 동의 (필수)</label>
+                            <button type="button" class="toggle-detail">내용보기</button>
+                        </div>
+                        <div class="consent-detail">
+                            <ol>
+                                <li>수집 항목: 이름, 이메일, 연락처, 회사명, 회사주소, 부서명, 직급</li>
+                                <li>수집 목적: 신청자 확인, 교육 참여를 위한 정보 발송</li>
+                                <li>보유 및 이용 기간: 교육 진행 기간</li>
+                                <li>동의 거부 시 불이익: 서비스 이용 제한</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- 동의 끝 -->
+
+                    <div class="signup-actions">
+                        <button type="button" class="btn-cancel">취소</button>
+                        <button type="submit" class="btn-submit">회원가입</button>
+                    </div>
+
+                    <script>
+                        document.querySelector('.toggle-detail').addEventListener('click', (e) => {
+                            e.currentTarget.classList.toggle('open');
+                            document.querySelector('.consent-detail').classList.toggle('open');
+                            document.querySelector('.consent-detail').style.display =
+                                document.querySelector('.consent-detail').classList.contains('open') ? 'block' : 'none';
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+    </main>
+    {{> footer}}
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

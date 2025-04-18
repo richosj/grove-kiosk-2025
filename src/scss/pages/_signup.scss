@@ -1,0 +1,151 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+
+
+.signup-form{
+    background-color: #ECEEF4;
+    border-top: 2px solid #2764E7;
+    .input-with-tel,
+    .input-with-email,
+    .radio-group,
+    .form-input{
+        width: 230px;
+    }
+    .radio-group{
+        //justify-content: center;
+    }
+    .input-with-tel{
+        display: flex;
+        align-items: center;
+        .form-input{
+            width: 100%;
+        }
+        span{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1rem;
+            flex-shrink: 0;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #000;
+        }
+    }
+    .input-with-email{
+        display: flex;
+        align-items: center;
+        gap: 0 1rem;
+        .email-input{
+            width: 8rem;
+        }
+        .domain-input{
+            flex-grow: 1;
+            width: 100%;
+        }
+        span{
+            width: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #000;
+        }
+    }
+}
+.field-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 5.6rem;
+    //border-bottom: 2px solid #fff;
+    &:last-child{
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+    .field{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding: 0 3.5rem;
+        // &:nth-child(even){
+        //     border-left: 1px solid #fff;
+        // }
+        // &:nth-child(odd){
+        //     border-right: 1px solid #fff;
+        // }
+        strong.label{
+            flex-shrink: 0;
+            width: 9.5rem;
+            color: #878787;
+        }
+    }
+}
+
+
+.consent {
+    margin-top: 3rem;
+  }
+  .consent-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .consent-header label {
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #000;
+    gap: 0 .8rem;
+  }
+  .toggle-detail {
+    margin-left: 8px;
+    font-size: 1.4rem;
+    color: #797979;
+    background: url($image-path + '/consent-arw-down.png') no-repeat 0 50%;
+    padding-left: 1.5rem;
+    &.open{
+        background-image: url($image-path + '/consent-arw.png');
+    }
+  }
+  .consent-detail {
+    display: none; /* 토글 스크립트로 show/hide */
+    background: #F5F5F5;
+    padding: 12px;
+    margin-top: 1rem;
+  }
+  .consent-detail ol {
+    padding-left: 20px;
+    margin: 0;
+    li{
+        font-size: 1.3rem;
+        color: #474747;
+        opacity: 0.8;
+    }
+  }
+  .signup-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+    gap: 0 2rem;
+    button{
+        height: 4.8rem;
+        width: 17.8rem;
+        border-radius: 0.5rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        &.btn-cancel{
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+        }
+        &.btn-submit{
+            background-color: #2764E7;
+        }
+    }
+  }
