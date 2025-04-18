@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const isGhPages = mode === 'ghpages'
   const isLocalBuild = mode === 'localbuild'
-  const projectName = 'exe-hrdk-2025'
+  const projectName = 'grove-kiosk-2025'
 
   const pagesPath = path.resolve(__dirname, 'src/pages')
 

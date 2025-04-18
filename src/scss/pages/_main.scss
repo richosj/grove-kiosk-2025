@@ -5,199 +5,28 @@
 @use '../utils/functions' as *;
 @use '../utils/mixins' as *;
 
+.kiosk {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-.main{
-    padding: 6rem 0 7rem;
-    background: url(#{$image-path}/main-bg.png) no-repeat center center / cover;
-    &-container{
-        margin: 0 auto;
-        width: 116rem;
-    }
-    &-banner{
-        margin: 0 auto;
-        background: #2764E7 url(#{$image-path}/main-banner.png) no-repeat center center / cover;
-        border-radius: 3rem;
-        width: 68.8rem;
-        height: 13.3rem;
-        align-items: center;
-        display: flex;
-        padding-left: 5.2rem;
-        &-content{
-            display: flex;
-            align-items: center;
-            gap: 0 2.7rem;
-        }
-        &-title{
-            color: #fff;
-            line-height: 1.24;
-            position: relative;
-            span{font-size: 2.2rem;display: block;}
-            strong{font-size: 2.6rem;display: block;}
-            i{
-                position: absolute;
-                right: -1.25rem;
-                top: 50%;
-                transform: translateY(-50%) translateX(100%);
-                display: inline-block;
-                width: 4.8rem;
-                height: 4.4rem;
-                background: url(#{$image-path}/main-banner-arw.png) no-repeat center center / contain;
-            }
-        }
-    }
-    &-links{
-        margin-top: 5.4rem;
-        &-list{
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0 2rem;
-            &-item{
-                background: #fff;
-                border-radius: 2rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                height: 22rem;
-                width: 21.6rem;
-                justify-content: center;
-                gap:2.4rem 0;
-                padding: 0 1.8rem;
-                span{
-                    text-align: center;
-                    font-weight: 600;
-                    font-size: 2.6rem;
-                }
-                a{
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-                    height: 4rem;
-                    width: 100%;
-                    background: #2764E7;
-                    border-radius: 6rem;
-                    color: #fff;
-                    font-size: 1.8rem;
-                    i{
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 3rem;
-                        height: 3rem;
-                        position: absolute;
-                        right: .5rem;
-                        top: .5rem;
-                        background-color: #fff;
-                        border-radius: 50%;
-                    }
-                }
-            }
-        }
-    }
-    &-board{
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2.5rem;
-    }
-    &-notice{
-        background: #fff;
-        border-radius: 2rem;
-        padding:1.6rem 2.4rem;
-        width: 68.8rem;
-        height: 24.8rem;
-        &-hgroup{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            h3{font-size: 2.4rem;font-weight: 600;}
-            a{font-size: 1.8rem;color: #2764E7;}
-        }
-        &-list{
-            margin-top: 2.4rem;
-            li{
-                height: 4rem;
-                a{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    position: relative;
-                    padding-left: 1.5rem;
-                    &::before{
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        content: '';
-                        display: inline-block;
-                        width: .4rem;
-                        height: .4rem;
-                        background: #aaa;
-                        border-radius: 50%;
-                    }
-                    .subject{
-                        color: #666666;
-                        font-size: 1.6rem;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        white-space: nowrap;
-                        width: 80%;
-                    }
-                    .date{font-size: 1.6rem;color: #C4C4C4;}
-                }
-            }
-        }
-    }
-    &-related-board{
-        background: rgb(#fff,0.6);
-        border-radius: 2rem;
-        padding:1rem 3.4rem;
-        width: 45.2rem;
-        h3{font-size: 1.8rem;color: #212121;}
-        &-list{
-            margin-top: 2.4rem;
-            a{
-                display: flex;
-                align-items: center;
-                gap: 0 1.6rem;
-                background-image: linear-gradient(to bottom, #fff, #C5C5C5);
-                height: 5.3rem;
-                border-radius: .5rem;
-                padding-left: 2.6rem;
-                position: relative;
-                &::after{
-                    position: absolute;
-                    right: 2.6rem;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    content: '';
-                    display: inline-block;
-                    width: 1rem;
-                    height: 2rem;
-                    background: url(#{$image-path}/main-related-arw.png) no-repeat center center / contain;
-                }
-                &:not(:last-child){margin-bottom: .7rem;}
-                span{
-                    font-size: 1.8rem;
-                    color: #212121;
-                    font-weight: 700;
-                }   
-                i{
-                    display: inline-flex;
-                    width: 3rem;
-                    height:3rem;
-                    background-repeat: no-repeat;
-                    background-position: 50% 50%;
-                    &.icon1{
-                        background-image: url(#{$image-path}/main-related-1.png);
-                    }
-                    &.icon2{
-                        background-image: url(#{$image-path}/main-related-2.png);
-                    }
-                    &.icon3{
-                        background-image: url(#{$image-path}/main-related-3.png);
-                    }
-                }
-            }
-        }
-    }
+.slider {
+  width: 100%;
+  height: 100%;
+
+  .slides {
+    display: flex;
+    width: 300%; // 슬라이드 개수 * 100%
+    height: 100%;
+    transition: transform 0.3s;
+  }
+
+  .slide {
+    width: calc(100% / 3);
+    height: 100%;
+    flex-shrink: 0;
+    /* 필요하면 백그라운드나 레이아웃 추가 */
+  }
 }

@@ -7,8 +7,5 @@
 @use 'base/reset';
 
 // layout, components, pages → 전부 index로 forward한 구조니까 단일 import
-@use 'layout';
-@use 'components';
 @use 'pages';
 
-// 여기 이후부터 일반 스타일 작성 가능

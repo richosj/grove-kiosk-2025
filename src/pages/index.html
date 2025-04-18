@@ -1,86 +1,213 @@
-<!-- @pageTitle 메인 -->
-<!-- @pageCreated 2025-04-17 -->
-<!-- @pageUpdated 2025-04-18 -->
-<!-- @pageNote 메인 -->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    {{> meta}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <title>터치 회전 메뉴</title>
+    
 </head>
+
 <body>
-    {{> header}}
-    <main class="main" id="content">
-        <div class="main-container">
-            <section class="main-banner">
-                <div class="main-banner-content">
-                    <div class="image"><img src="/assets/images/main-banner-img.png" alt=""></div>
-                    <div class="main-banner-title">
-                        <span>한국산업인력공단</span>
-                        <strong>공정채용 사업 알아보기</strong>
-                        <i></i>
+    <div id="debug"></div>
+    <nav class="nav" id="nav">
+        <div class="menu-container">
+            <div class="wheel" id="wheel">
+                <div class="menu-item" style="top: 70px; left: 215px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
                     </div>
+                    <div class="label">About Omlydo</div>
                 </div>
-            </section>
-            <section class="main-links">
-                <div class="main-links-list">
-                    <div class="main-links-list-item">
-                        <span>기본 인사담당자</span>
-                        <a href="#" style="background-color: #6DC5DC;">바로가기 <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 5.16667H10.405L6.655 1.41667L7.83333 0.238333L13.595 6L7.83333 11.7617L6.655 10.5833L10.405 6.83333H0.75V5.16667Z" fill="#6DC5DC"/></svg></i></a>
-                    </div>
-                    <div class="main-links-list-item">
-                        <span>심화 인사담당자</span>
-                        <a href="#" style="background-color: #6786BF;">바로가기 <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 5.16667H10.405L6.655 1.41667L7.83333 0.238333L13.595 6L7.83333 11.7617L6.655 10.5833L10.405 6.83333H0.75V5.16667Z" fill="#6786BF"/></svg></i></a>
-                    </div>
-                    <div class="main-links-list-item">
-                        <span>기본 평가위원</span>
-                        <a href="#" style="background-color: #FF8C68;">바로가기 <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 5.16667H10.405L6.655 1.41667L7.83333 0.238333L13.595 6L7.83333 11.7617L6.655 10.5833L10.405 6.83333H0.75V5.16667Z" fill="#FF8C68"/></svg></i></a>
-                    </div>
-                    <div class="main-links-list-item">
-                        <span>보수교육 평가위원</span>
-                        <a href="#" style="background-color: #5BD1A1;">바로가기 <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 5.16667H10.405L6.655 1.41667L7.83333 0.238333L13.595 6L7.83333 11.7617L6.655 10.5833L10.405 6.83333H0.75V5.16667Z" fill="#5BD1A1"/></svg></i></a>
-                    </div>
-                    <div class="main-links-list-item">
-                        <span>CEO및 임원</span>
-                        <a href="#" style="background-color: #CDAC40;">바로가기 <i><svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.75 5.16667H10.405L6.655 1.41667L7.83333 0.238333L13.595 6L7.83333 11.7617L6.655 10.5833L10.405 6.83333H0.75V5.16667Z" fill="#CDAC40"/></svg></i></a>
-                    </div>
-                </div>
-            </section>
 
-            <section class="main-board">
-                <div class="main-notice">
-                    <div class="main-notice-hgroup">
-                        <h3>공지사항</h3>
-                        <a href="#">더보기</a>
+                <div class="menu-item" style="top: 140px; left: 80px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
                     </div>
-                    <ul class="main-notice-list">
-                        <li><a href="#"><span class="subject">공정채용 기업교육의 공지사항글이 올라옵니다.</span><span class="date">2025-04-17</span></a></li>
-                        <li><a href="#"><span class="subject">공정채용 기업교육의 공지사항글이 올라옵니다.</span><span class="date">2025-04-17</span></a></li>
-                        <li><a href="#"><span class="subject">공정채용 기업교육의 공지사항글이 올라옵니다.</span><span class="date">2025-04-17</span></a></li>
-                        <li><a href="#"><span class="subject">공정채용 기업교육의 공지사항글이 올라옵니다.</span><span class="date">2025-04-17</span></a></li>
-                    </ul>
+                    <div class="label">Features</div>
                 </div>
-                <div class="main-related-board">
-                    <h3>공정채용 유관사이트</h3>
-                    <div class="main-related-board-list">
-                        <a href="#">
-                            <i class="icon1"></i>
-                            <span>공정채용 사이트</span>
-                        </a>
-                        <a href="#">
-                            <i class="icon2"></i>
-                            <span>채용 평가위원 신청</span>
-                        </a>
-                        <a href="#">
-                            <i class="icon3"></i>
-                            <span>공정채용 자료실</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
 
+                <div class="menu-item" style="top: 300px; left: 80px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="label">Clinical Study</div>
+                </div>
+
+                <div class="menu-item" style="top: 370px; left: 215px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                            <path d="M12 20V10M18 20V4M6 20v-4"></path>
+                        </svg>
+                    </div>
+                    <div class="label">Efficacy Data</div>
+                </div>
+
+                <div class="menu-item" style="top: 300px; left: 350px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                            <path d="M13 17.3a9.9 9.9 0 0 1 4 2.1 10 10 0 1 0-14 0 9.9 9.9 0 0 1 4-2.1"></path>
+                            <line x1="13" y1="8" x2="13" y2="2"></line>
+                            <path d="M12 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                        </svg>
+                    </div>
+                    <div class="label">Safety Data</div>
+                </div>
+
+                <div class="menu-item" style="top: 140px; left: 350px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </div>
+                    <div class="label">PK/PD Data</div>
+                </div>
+            </div>
+
+            <div class="home-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+                </svg>
+            </div>
         </div>
-    </main>
-    {{> footer}}
-    <script type="module" src="/js/main.js"></script>
+    </nav>
+    <div class="kiosk">
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">컨텐츠1</div>
+                <div class="swiper-slide">컨텐츠2</div>
+                <div class="swiper-slide">컨텐츠3</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="kiosk-footer">
+            <img src="/assets/images/footer.png">
+        </div>
+    </div>
+
+    <script src="/js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            on: {
+                slideChange() {
+                
+                }
+            }
+            });
+
+            
+
+            const wheel = document.getElementById('wheel');
+            const debug = document.getElementById('debug');
+            const menuItems = wheel.querySelectorAll('.menu-item');
+
+            let rotation = 0;
+            let startAngle = 0;
+            let isDragging = false;
+
+            function getAngleFromEvent(e) {
+                const rect = wheel.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                return Math.atan2(y, x) * 180 / Math.PI;
+            }
+
+            function applyRotation(rot) {
+                wheel.style.transform = `rotate(${rot}deg)`;
+                menuItems.forEach(item => {
+                    item.style.transform = `rotate(${-rot}deg)`;  // 메뉴 항상 upright
+                });
+            }
+
+            wheel.addEventListener('pointerdown', e => {
+                e.preventDefault();
+                isDragging = true;
+                wheel.setPointerCapture(e.pointerId);
+                startAngle = getAngleFromEvent(e) - rotation;
+                wheel.style.transition = '';
+                debug.textContent = `시작: ${rotation.toFixed(1)}°`;
+            });
+
+            wheel.addEventListener('pointermove', e => {
+                if (!isDragging) return;
+                e.preventDefault();
+                rotation = getAngleFromEvent(e) - startAngle;
+                applyRotation(rotation);
+                debug.textContent = `회전 중: ${rotation.toFixed(1)}°`;
+            });
+
+            wheel.addEventListener('pointerup', e => {
+                if (!isDragging) return;
+                e.preventDefault();
+                isDragging = false;
+                wheel.releasePointerCapture(e.pointerId);
+
+                // 60° 단위로 스냅
+                const snap = 60;
+                rotation = Math.round(rotation / snap) * snap;
+                wheel.style.transition = 'transform 0.3s ease-out';
+                menuItems.forEach(it => it.style.transition = 'transform 0.3s ease-out');
+                applyRotation(rotation);
+                debug.textContent = `스냅: ${rotation.toFixed(1)}°`;
+
+                setTimeout(() => {
+                    wheel.style.transition = '';
+                    menuItems.forEach(it => it.style.transition = '');
+                }, 300);
+            });
+
+            wheel.addEventListener('pointercancel', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                wheel.releasePointerCapture(e.pointerId);
+            });
+
+            // 홈 버튼 리셋
+            document.querySelector('.home-button').addEventListener('click', () => {
+                rotation = 0;
+                wheel.style.transition = 'transform 0.5s ease-out';
+                menuItems.forEach(it => it.style.transition = 'transform 0.5s ease-out');
+                applyRotation(0);
+                setTimeout(() => {
+                    wheel.style.transition = '';
+                    menuItems.forEach(it => it.style.transition = '');
+                }, 500);
+                debug.textContent = '홈 클릭';
+            });
+
+            // 메뉴 클릭
+            menuItems.forEach(item => {
+                item.addEventListener('click', e => {
+                    e.stopPropagation();
+                    debug.textContent = `선택: ${item.querySelector('.label').textContent}`;
+                    // 추가 처리
+                });
+            });
+        });
+
+    </script>
 </body>
+
 </html>

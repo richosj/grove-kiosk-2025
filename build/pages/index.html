@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>터치 회전 메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: none;
+        }
+        
+        body {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            font-family: Arial, sans-serif;
+        }
+        
+        .menu-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            transform-origin: center;
+            touch-action: none;
+        }
+        
+        .wheel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: white;
+            touch-action: none;
+        }
+        
+        .home-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: #FFDD57;
+            border-radius: 50%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .home-button svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        .menu-item {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            transform-origin: center center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-item .icon {
+            margin-bottom: 5px;
+        }
+        
+        .menu-item .label {
+            font-size: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        #debug {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 14px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="debug"></div>
+    <div class="menu-container">
+        <div class="wheel" id="wheel">
+            <div class="menu-item" style="top: 70px; left: 215px;">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
+                <div class="label">About Omlydo</div>
+            </div>
+            
+            <div class="menu-item" style="top: 140px; left: 80px;">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="label">Features</div>
+            </div>
+            
+            <div class="menu-item" style="top: 300px; left: 80px;">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="label">Clinical Study</div>
+            </div>
+            
+            <div class="menu-item" style="top: 370px; left: 215px;">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                        <path d="M12 20V10M18 20V4M6 20v-4"></path>
+                    </svg>
+                </div>
+                <div class="label">Efficacy Data</div>
+            </div>
+            
+            <div class="menu-item" style="top: 300px; left: 350px;">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                        <path d="M13 17.3a9.9 9.9 0 0 1 4 2.1 10 10 0 1 0-14 0 9.9 9.9 0 0 1 4-2.1"></path>
+                        <line x1="13" y1="8" x2="13" y2="2"></line>
+                        <path d="M12 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                    </svg>
+                </div>
+                <div class="label">Safety Data</div>
+            </div>
+            
+            <div class="menu-item" style="top: 140px; left: 350px;">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                </div>
+                <div class="label">PK/PD Data</div>
+            </div>
+        </div>
+        
+        <div class="home-button">
+            <svg viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=> {
+        const wheel = document.getElementById('wheel');
+        const debug = document.getElementById('debug');
+        const menuItems = wheel.querySelectorAll('.menu-item');
+
+        let rotation = 0;
+        let startAngle = 0;
+        let isDragging = false;
+
+        function getAngleFromEvent(e) {
+            const rect = wheel.getBoundingClientRect();
+            const x = e.clientX - (rect.left + rect.width/2);
+            const y = e.clientY - (rect.top + rect.height/2);
+            return Math.atan2(y, x) * 180 / Math.PI;
+        }
+
+        function applyRotation(rot) {
+            wheel.style.transform = `rotate(${rot}deg)`;
+            menuItems.forEach(item => {
+            item.style.transform = `rotate(${-rot}deg)`;  // 메뉴 항상 upright
+            });
+        }
+
+        wheel.addEventListener('pointerdown', e => {
+            e.preventDefault();
+            isDragging = true;
+            wheel.setPointerCapture(e.pointerId);
+            startAngle = getAngleFromEvent(e) - rotation;
+            wheel.style.transition = '';
+            debug.textContent = `시작: ${rotation.toFixed(1)}°`;
+        });
+
+        wheel.addEventListener('pointermove', e => {
+            if (!isDragging) return;
+            e.preventDefault();
+            rotation = getAngleFromEvent(e) - startAngle;
+            applyRotation(rotation);
+            debug.textContent = `회전 중: ${rotation.toFixed(1)}°`;
+        });
+
+        wheel.addEventListener('pointerup', e => {
+            if (!isDragging) return;
+            e.preventDefault();
+            isDragging = false;
+            wheel.releasePointerCapture(e.pointerId);
+
+            // 60° 단위로 스냅
+            const snap = 60;
+            rotation = Math.round(rotation / snap) * snap;
+            wheel.style.transition = 'transform 0.3s ease-out';
+            menuItems.forEach(it => it.style.transition = 'transform 0.3s ease-out');
+            applyRotation(rotation);
+            debug.textContent = `스냅: ${rotation.toFixed(1)}°`;
+
+            setTimeout(()=>{
+            wheel.style.transition = '';
+            menuItems.forEach(it => it.style.transition = '');
+            }, 300);
+        });
+
+        wheel.addEventListener('pointercancel', e => {
+            if (!isDragging) return;
+            isDragging = false;
+            wheel.releasePointerCapture(e.pointerId);
+        });
+
+        // 홈 버튼 리셋
+        document.querySelector('.home-button').addEventListener('click', ()=> {
+            rotation = 0;
+            wheel.style.transition = 'transform 0.5s ease-out';
+            menuItems.forEach(it => it.style.transition = 'transform 0.5s ease-out');
+            applyRotation(0);
+            setTimeout(()=>{
+            wheel.style.transition = '';
+            menuItems.forEach(it => it.style.transition = '');
+            }, 500);
+            debug.textContent = '홈 클릭';
+        });
+
+        // 메뉴 클릭
+        menuItems.forEach(item => {
+            item.addEventListener('click', e => {
+            e.stopPropagation();
+            debug.textContent = `선택: ${item.querySelector('.label').textContent}`;
+            // 추가 처리
+            });
+        });
+        });
+
+    </script>
+</body>
+</html>
