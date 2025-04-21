@@ -10,23 +10,59 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: url(/assets/images/background.png) no-repeat 0 0;
 }
 
-.slider {
-  width: 100%;
-  height: 100%;
+.left{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
 
-  .slides {
-    display: flex;
-    width: 300%; // 슬라이드 개수 * 100%
-    height: 100%;
-    transition: transform 0.3s;
+.page-1,
+.background{
+  height: 3401px;
+  width: 2160px;
+}
+
+.title{
+  padding: 180px 0 0 80px;
+}
+.page-1{
+  position: relative;
+}
+
+.page-1{
+  .title{
+    margin-bottom: 125px;
   }
-
-  .slide {
-    width: calc(100% / 3);
-    height: 100%;
-    flex-shrink: 0;
-    /* 필요하면 백그라운드나 레이아웃 추가 */
+  .content{
+    padding-left: 150px;
+  }
+  .item1{
+    margin-bottom: 95px;
+  }
+  .item3{
+    margin: 118px 0 50px;
+  }
+  .item4{
+    padding-left: 120px;
+  }
+  .item5{
+    padding-top: 110px;
+    padding-bottom: 40px;
+  }
+  .item7{
+    margin: 110px 0 40px;
+  }
+  .item8{
+    position: relative;
+    margin-left: 80px;
+  }
+  .foot{
+    position: absolute;
+    left: 80px;
+    bottom: 30px;
   }
 }
