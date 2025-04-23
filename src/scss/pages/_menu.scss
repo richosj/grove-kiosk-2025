@@ -2,12 +2,12 @@
 #nav{
   position: absolute;
   z-index: 5;
-  display: none;
+  //display: none;
 }
 .menu-container {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 1874px;
+  height: 1874px;
   transform-origin: center;
   touch-action: none;
 }
@@ -44,26 +44,16 @@
 
 .menu-item {
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 185px;
+  height: 267px;
   transform-origin: center center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
-
-.menu-item .icon {
-  margin-bottom: 5px;
-}
-
-.menu-item .label {
-  font-size: 10px;
-  text-align: center;
-  font-weight: bold;
-  color: #333;
-  line-height: 1.2;
-}
+.menu-item-1{left: 851px;top: 156px;}
+.menu-item-2{left: 1360px;top: 540px;}
+.menu-item-3{left: 1360px;top: 1100px;}
+.menu-item-4{left: 851px;top: 1480px;}
+.menu-item-5{left: 315px;top: 1100px;}
+.menu-item-6{left: 315px;top: 540px;}
 
 #debug {
   position: absolute;

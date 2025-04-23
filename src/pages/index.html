@@ -15,21 +15,56 @@
         <div class="left" aria-label="좌측 메뉴"><img src="/assets/images/left.png" alt=""></div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="background">
-                        
-                    </div>
-                </div>
-                <div class="swiper-slide" aria-label="1 페이지">
-                    {{> page1}}
-                </div>
                 <div class="swiper-slide" aria-label="인트로 페이지">
                     <div class="intro">
                         <img src="/assets/images/1.png" alt="">
                     </div>
                 </div>
+                <div class="swiper-slide" aria-label="1 페이지">
+                    {{> page1}}
+                </div>
+                <div class="swiper-slide" aria-label="2 페이지">
+                    <div class="background">
+                        {{> page2}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="3 페이지">
+                    <div class="background">
+                        {{> page3}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="4 페이지">
+                    <div class="background">
+                        {{> page4}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="5 페이지">
+                    <div class="background">
+                        {{> page5}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="6 페이지">
+                    <div class="background">
+                        {{> page6}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="7 페이지">
+                    <div class="background">
+                        {{> page7}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="8 페이지">
+                    <div class="background">
+                        {{> page8}}
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="9 페이지">
+                    <div class="background">
+                        {{> page9}}
+                    </div>
+                </div>
             </div>
-            <div class="swiper-pagination"></div>
+            <!-- <div class="swiper-pagination"></div> -->
         </div>
 
         <div class="kiosk-footer">
@@ -46,101 +81,63 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
+            initialSlide: 2,
             on: {
+                init() {
+                    
+                },
                 slideChange() {
-                
+                    
                 }
             }
             });
 
-            
-
             const wheel = document.getElementById('wheel');
-            //const debug = document.getElementById('debug');
-            const menuItems = wheel.querySelectorAll('.menu-item');
+  let rotation = 0;
+  let startAngle = 0;
+  let isDragging = false;
 
-            let rotation = 0;
-            let startAngle = 0;
-            let isDragging = false;
+  function getAngle(e) {
+    const rect = wheel.getBoundingClientRect();
+    const x = (e.clientX ?? e.touches[0].clientX) - (rect.left + rect.width/2);
+    const y = (e.clientY ?? e.touches[0].clientY) - (rect.top  + rect.height/2);
+    return Math.atan2(y, x) * 180 / Math.PI;
+  }
 
-            function getAngleFromEvent(e) {
-                const rect = wheel.getBoundingClientRect();
-                const x = e.clientX - (rect.left + rect.width / 2);
-                const y = e.clientY - (rect.top + rect.height / 2);
-                return Math.atan2(y, x) * 180 / Math.PI;
-            }
+  function applyRotation(rot) {
+    wheel.style.transform = `rotate(${rot}deg)`;
+  }
 
-            function applyRotation(rot) {
-                wheel.style.transform = `rotate(${rot}deg)`;
-                menuItems.forEach(item => {
-                    item.style.transform = `rotate(${-rot}deg)`;  // 메뉴 항상 upright
-                });
-            }
+  wheel.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    isDragging = true;
+    wheel.setPointerCapture(e.pointerId);
+    startAngle = getAngle(e) - rotation;
+    wheel.style.transition = '';
+  });
 
-            wheel.addEventListener('pointerdown', e => {
-                e.preventDefault();
-                isDragging = true;
-                wheel.setPointerCapture(e.pointerId);
-                startAngle = getAngleFromEvent(e) - rotation;
-                wheel.style.transition = '';
-                //debug.textContent = `시작: ${rotation.toFixed(1)}°`;
-            });
+  wheel.addEventListener('pointermove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    rotation = getAngle(e) - startAngle;
+    applyRotation(rotation);
+  });
 
-            wheel.addEventListener('pointermove', e => {
-                if (!isDragging) return;
-                e.preventDefault();
-                rotation = getAngleFromEvent(e) - startAngle;
-                applyRotation(rotation);
-                //debug.textContent = `회전 중: ${rotation.toFixed(1)}°`;
-            });
+  wheel.addEventListener('pointerup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    wheel.releasePointerCapture(e.pointerId);
+    rotation = Math.round(rotation / 60) * 60;    // 60° 스냅
+    wheel.style.transition = 'transform 0.3s ease-out';
+    applyRotation(rotation);
+    setTimeout(() => wheel.style.transition = '', 300);
+  });
 
-            wheel.addEventListener('pointerup', e => {
-                if (!isDragging) return;
-                e.preventDefault();
-                isDragging = false;
-                wheel.releasePointerCapture(e.pointerId);
-
-                // 60° 단위로 스냅
-                const snap = 60;
-                rotation = Math.round(rotation / snap) * snap;
-                wheel.style.transition = 'transform 0.3s ease-out';
-                menuItems.forEach(it => it.style.transition = 'transform 0.3s ease-out');
-                applyRotation(rotation);
-                //debug.textContent = `스냅: ${rotation.toFixed(1)}°`;
-
-                setTimeout(() => {
-                    wheel.style.transition = '';
-                    menuItems.forEach(it => it.style.transition = '');
-                }, 300);
-            });
-
-            wheel.addEventListener('pointercancel', e => {
-                if (!isDragging) return;
-                isDragging = false;
-                wheel.releasePointerCapture(e.pointerId);
-            });
-
-            // 홈 버튼 리셋
-            document.querySelector('.home-button').addEventListener('click', () => {
-                rotation = 0;
-                wheel.style.transition = 'transform 0.5s ease-out';
-                menuItems.forEach(it => it.style.transition = 'transform 0.5s ease-out');
-                applyRotation(0);
-                setTimeout(() => {
-                    wheel.style.transition = '';
-                    menuItems.forEach(it => it.style.transition = '');
-                }, 500);
-                //debug.textContent = '홈 클릭';
-            });
-
-            // 메뉴 클릭
-            menuItems.forEach(item => {
-                item.addEventListener('click', e => {
-                    e.stopPropagation();
-                    //debug.textContent = `선택: ${item.querySelector('.label').textContent}`;
-                    // 추가 처리
-                });
-            });
+  wheel.addEventListener('pointercancel', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    wheel.releasePointerCapture(e.pointerId);
+  });
         });
 
     </script>
