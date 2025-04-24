@@ -15,30 +15,29 @@
     <nav class="nav" id="nav">
         <div class="menu-container">
             <div class="wheel" id="wheel">
-                
-            </div>
-            <div class="menu-item menu-item-1">
-                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m1.png" alt=""></div>
-            </div>
+                <div class="menu-item menu-item-1">
+                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m1.png" alt=""></div>
+                </div>
     
-            <div class="menu-item menu-item-2">
-                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m2.png" alt=""></div>
-            </div>
+                <div class="menu-item menu-item-2">
+                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m2.png" alt=""></div>
+                </div>
     
-            <div class="menu-item menu-item-3">
-                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m3.png" alt=""></div>
-            </div>
+                <div class="menu-item menu-item-3">
+                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m3.png" alt=""></div>
+                </div>
     
-            <div class="menu-item menu-item-4">
-                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m4.png" alt=""></div>
-            </div>
+                <div class="menu-item menu-item-4">
+                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m4.png" alt=""></div>
+                </div>
     
-            <div class="menu-item menu-item-5">
-                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m5.png" alt=""></div>
-            </div>
+                <div class="menu-item menu-item-5">
+                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m5.png" alt=""></div>
+                </div>
     
-            <div class="menu-item menu-item-6">
-                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m6.png" alt=""></div>
+                <div class="menu-item menu-item-6">
+                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m6.png" alt=""></div>
+                </div>
             </div>
     
             <div class="home-button"></div>
@@ -349,12 +348,12 @@
 
             document.querySelector('.menu-item-1')?.addEventListener('click', () => {
                 // Item 1 동작
-                nav.classList.remove('show');
+                swiper.slideTo(2)
             });
 
             document.querySelector('.menu-item-2')?.addEventListener('click', () => {
                 // Item 2 동작
-                nav.classList.remove('show');
+                swiper.slideTo(3)
             });
 
             document.querySelector('.menu-item-3')?.addEventListener('click', () => {
@@ -425,12 +424,14 @@
 
 
             wheel.addEventListener('pointerdown', e => {
-                e.preventDefault();
-                isDragging = true;
-                wheel.setPointerCapture(e.pointerId);
-                startAngle = getAngle(e);
-                lastAngle = startAngle;
-                wheel.style.transition = '';
+                if (e.target.closest('.menu-item')) return;
+              
+                    e.preventDefault();
+                    isDragging = true;
+                    wheel.setPointerCapture(e.pointerId);
+                    startAngle = getAngle(e);
+                    lastAngle = startAngle;
+                    wheel.style.transition = '';
                 });
 
                 wheel.addEventListener('pointermove', e => {
