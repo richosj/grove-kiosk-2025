@@ -15,31 +15,32 @@
     <nav class="nav" id="nav">
         <div class="menu-container">
             <div class="wheel" id="wheel">
-                <div class="menu-item menu-item-1">
-                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m1.png" alt=""></div>
-                </div>
-    
-                <div class="menu-item menu-item-2">
-                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m2.png" alt=""></div>
-                </div>
-    
-                <div class="menu-item menu-item-3">
-                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m3.png" alt=""></div>
-                </div>
-    
-                <div class="menu-item menu-item-4">
-                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m4.png" alt=""></div>
-                </div>
-    
-                <div class="menu-item menu-item-5">
-                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m5.png" alt=""></div>
-                </div>
-    
-                <div class="menu-item menu-item-6">
-                    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m6.png" alt=""></div>
-                </div>
+                
             </div>
-    <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m1.png" alt=""></div>
+            <div class="menu-item menu-item-1">
+                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m1.png" alt=""></div>
+            </div>
+    
+            <div class="menu-item menu-item-2">
+                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m2.png" alt=""></div>
+            </div>
+    
+            <div class="menu-item menu-item-3">
+                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m3.png" alt=""></div>
+            </div>
+    
+            <div class="menu-item menu-item-4">
+                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m4.png" alt=""></div>
+            </div>
+    
+            <div class="menu-item menu-item-5">
+                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m5.png" alt=""></div>
+            </div>
+    
+            <div class="menu-item menu-item-6">
+                <div class="item-inner"><img src="/grove-kiosk-2025/assets/images/m6.png" alt=""></div>
+            </div>
+    
             <div class="home-button"></div>
         </div>
     </nav>    <div class="kiosk">
@@ -124,6 +125,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="paging">
+                                <button class="current"></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                            </div>
                             <div class="foot"><img src="/grove-kiosk-2025/assets/images/page3-foot.png" alt=""></div>
                         </div>                    </div>
                 </div>
@@ -146,6 +153,12 @@
                                     <div class="bar-conts bar-cont7"><div><div class="numbs">81.3</div><div class="bars"></div></div></div>
                                 </div>
                             </div>
+                            <div class="paging">
+                                <button></button>
+                                <button class="current"></button>
+                                <button></button>
+                                <button></button>
+                            </div>
                             <div class="foot"><img src="/grove-kiosk-2025/assets/images/page4-foot.png" alt=""></div>
                         </div>                    </div>
                 </div>
@@ -161,6 +174,12 @@
                                 <div class="item5"><img src="/grove-kiosk-2025/assets/images/page5_06.png" alt=""></div>
                                 <div class="item6"><img src="/grove-kiosk-2025/assets/images/page5_07.png" alt=""></div>
                                 <div class="item7"><img src="/grove-kiosk-2025/assets/images/page5_08.png" alt=""></div>
+                            </div>
+                            <div class="paging">
+                                <button></button>
+                                <button></button>
+                                <button class="current"></button>
+                                <button></button>
                             </div>
                             <div class="foot"><img src="/grove-kiosk-2025/assets/images/page5-foot.png" alt=""></div>
                         </div>                    </div>
@@ -236,6 +255,12 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="paging">
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button class="current"></button>
                             </div>
                             <div class="foot"><img src="/grove-kiosk-2025/assets/images/page6-foot.png" alt=""></div>
                         </div>                    </div>
@@ -313,47 +338,54 @@
                     
                 },
                 slideChange() {
-                    
+                    menuButton.classList.remove('on');
+            nav.classList.remove('show');
                 }
             }
             });
 
-            document.querySelector('.menu-item-1').addEventListener('click', () => {
-                // Item 1 동작
-                console.log('Item 1 clicked');
-            });
-
-            document.querySelector('.menu-item-2').addEventListener('click', () => {
-                // Item 2 동작
-                console.log('Item 2 clicked');
-            });
-
-            document.querySelector('.menu-item-3').addEventListener('click', () => {
-            // Item 3 동작
-            console.log('Item 3 clicked');
-            });
-
-            document.querySelector('.menu-item-4').addEventListener('click', () => {
-            // Item 4 동작
-            console.log('Item 4 clicked');
-            });
-
-            document.querySelector('.menu-item-5').addEventListener('click', () => {
-            // Item 5 동작
-            console.log('Item 5 clicked');
-            });
-
-            document.querySelector('.menu-item-6').addEventListener('click', () => {
-            // Item 6 동작
-            console.log('Item 6 clicked');
-            
-
             const menuButton = document.getElementById('menuButton');
             const nav = document.getElementById('nav');
 
+            document.querySelector('.menu-item-1')?.addEventListener('click', () => {
+                // Item 1 동작
+                nav.classList.remove('show');
+            });
+
+            document.querySelector('.menu-item-2')?.addEventListener('click', () => {
+                // Item 2 동작
+                nav.classList.remove('show');
+            });
+
+            document.querySelector('.menu-item-3')?.addEventListener('click', () => {
+            // Item 3 동작
+            swiper.slideTo(4)
+            });
+
+            document.querySelector('.menu-item-4')?.addEventListener('click', () => {
+            // Item 4 동작
+            swiper.slideTo(7)
+            });
+
+            document.querySelector('.menu-item-5')?.addEventListener('click', () => {
+            // Item 5 동작
+            swiper.slideTo(8)
+            
+            });
+
+            document.querySelector('.menu-item-6')?.addEventListener('click', () => {
+            // Item 6 동작
+            swiper.slideTo(9)
+            })
+            document.querySelector('.home-button')?.addEventListener('click', () => {
+            // Item 6 동작
+            swiper.slideTo(0)
+            })
+            
+
             menuButton.addEventListener('click', () => {
-            menuButton.classList.toggle('on');
-            nav.classList.toggle('show');
+                menuButton.classList.toggle('on');
+                nav.classList.toggle('show');
             });
 
 
