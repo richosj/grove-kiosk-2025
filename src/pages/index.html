@@ -17,6 +17,9 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide" aria-label="인트로 페이지">
                     <div class="intro">
+                        <div class="intro-1"><img src="/assets/images/intro-txt_01.png" alt=""></div>
+                        <div class="intro-2"><img src="/assets/images/intro-txt_02.png" alt=""></div>
+                        <div class="intro-3"><img src="/assets/images/intro-txt_03.png" alt=""></div>
                         <img src="/assets/images/1.png" alt="">
                     </div>
                 </div>
@@ -81,9 +84,12 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 2,
+            initialSlide: 3,
             on: {
                 init() {
+                    setTimeout(function(){
+                        document.querySelector('.intro').classList.add('init')
+                    },1000)
                     
                 },
                 slideChange() {
@@ -93,51 +99,51 @@
             });
 
             const wheel = document.getElementById('wheel');
-  let rotation = 0;
-  let startAngle = 0;
-  let isDragging = false;
+            let rotation = 0;
+            let startAngle = 0;
+            let isDragging = false;
 
-  function getAngle(e) {
-    const rect = wheel.getBoundingClientRect();
-    const x = (e.clientX ?? e.touches[0].clientX) - (rect.left + rect.width/2);
-    const y = (e.clientY ?? e.touches[0].clientY) - (rect.top  + rect.height/2);
-    return Math.atan2(y, x) * 180 / Math.PI;
-  }
+            function getAngle(e) {
+                const rect = wheel.getBoundingClientRect();
+                const x = (e.clientX ?? e.touches[0].clientX) - (rect.left + rect.width/2);
+                const y = (e.clientY ?? e.touches[0].clientY) - (rect.top  + rect.height/2);
+                return Math.atan2(y, x) * 180 / Math.PI;
+            }
 
-  function applyRotation(rot) {
-    wheel.style.transform = `rotate(${rot}deg)`;
-  }
+            function applyRotation(rot) {
+                wheel.style.transform = `rotate(${rot}deg)`;
+            }
 
-  wheel.addEventListener('pointerdown', e => {
-    e.preventDefault();
-    isDragging = true;
-    wheel.setPointerCapture(e.pointerId);
-    startAngle = getAngle(e) - rotation;
-    wheel.style.transition = '';
-  });
+            wheel.addEventListener('pointerdown', e => {
+                e.preventDefault();
+                isDragging = true;
+                wheel.setPointerCapture(e.pointerId);
+                startAngle = getAngle(e) - rotation;
+                wheel.style.transition = '';
+            });
 
-  wheel.addEventListener('pointermove', e => {
-    if (!isDragging) return;
-    e.preventDefault();
-    rotation = getAngle(e) - startAngle;
-    applyRotation(rotation);
-  });
+            wheel.addEventListener('pointermove', e => {
+                if (!isDragging) return;
+                e.preventDefault();
+                rotation = getAngle(e) - startAngle;
+                applyRotation(rotation);
+            });
 
-  wheel.addEventListener('pointerup', e => {
-    if (!isDragging) return;
-    isDragging = false;
-    wheel.releasePointerCapture(e.pointerId);
-    rotation = Math.round(rotation / 60) * 60;    // 60° 스냅
-    wheel.style.transition = 'transform 0.3s ease-out';
-    applyRotation(rotation);
-    setTimeout(() => wheel.style.transition = '', 300);
-  });
+            wheel.addEventListener('pointerup', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                wheel.releasePointerCapture(e.pointerId);
+                rotation = Math.round(rotation / 60) * 60;    // 60° 스냅
+                wheel.style.transition = 'transform 0.3s ease-out';
+                applyRotation(rotation);
+                setTimeout(() => wheel.style.transition = '', 300);
+            });
 
-  wheel.addEventListener('pointercancel', e => {
-    if (!isDragging) return;
-    isDragging = false;
-    wheel.releasePointerCapture(e.pointerId);
-  });
+            wheel.addEventListener('pointercancel', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                wheel.releasePointerCapture(e.pointerId);
+            });
         });
 
     </script>
