@@ -12,7 +12,12 @@
 <body>
     {{> nav}}
     <div class="kiosk">
-        <div class="left" aria-label="좌측 메뉴"><img src="/assets/images/left.png" alt=""></div>
+        <div class="left" aria-label="좌측 메뉴">
+            <div>
+                <img src="/assets/images/left.png" alt="">
+                <button id="menuButton"></button>
+            </div>
+        </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" aria-label="인트로 페이지">
@@ -84,7 +89,7 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 3,
+            //initialSlide: 6,
             on: {
                 init() {
                     setTimeout(function(){
@@ -93,10 +98,56 @@
                     
                 },
                 slideChange() {
-                    
+                    menuButton.classList.remove('on');
+            nav.classList.remove('show');
                 }
             }
             });
+
+            const menuButton = document.getElementById('menuButton');
+            const nav = document.getElementById('nav');
+
+            document.querySelector('.menu-item-1')?.addEventListener('click', () => {
+                // Item 1 동작
+                swiper.slideTo(2)
+            });
+
+            document.querySelector('.menu-item-2')?.addEventListener('click', () => {
+                // Item 2 동작
+                swiper.slideTo(3)
+            });
+
+            document.querySelector('.menu-item-3')?.addEventListener('click', () => {
+            // Item 3 동작
+            swiper.slideTo(4)
+            });
+
+            document.querySelector('.menu-item-4')?.addEventListener('click', () => {
+            // Item 4 동작
+            swiper.slideTo(7)
+            });
+
+            document.querySelector('.menu-item-5')?.addEventListener('click', () => {
+            // Item 5 동작
+            swiper.slideTo(8)
+            
+            });
+
+            document.querySelector('.menu-item-6')?.addEventListener('click', () => {
+            // Item 6 동작
+            swiper.slideTo(9)
+            })
+            document.querySelector('.home-button')?.addEventListener('click', () => {
+            // Item 6 동작
+            swiper.slideTo(0)
+            })
+            
+
+            menuButton.addEventListener('click', () => {
+                menuButton.classList.toggle('on');
+                nav.classList.toggle('show');
+            });
+
 
             const wheel = document.getElementById('wheel');
             let rotation = 0;
@@ -112,22 +163,49 @@
 
             function applyRotation(rot) {
                 wheel.style.transform = `rotate(${rot}deg)`;
+
+                // 메뉴가 휠과 같이 회전하되, 내용물은 반대로 보정
+                const inners = wheel.querySelectorAll('.item-inner');
+                inners.forEach(inner => {
+                    inner.style.transform = `rotate(${-rot}deg)`;
+                });
             }
 
-            wheel.addEventListener('pointerdown', e => {
-                e.preventDefault();
-                isDragging = true;
-                wheel.setPointerCapture(e.pointerId);
-                startAngle = getAngle(e) - rotation;
-                wheel.style.transition = '';
-            });
+            function normalizeAngle(angle) {
+            return (angle + 360) % 360;
+            }
 
-            wheel.addEventListener('pointermove', e => {
+            function getShortestRotation(from, to) {
+            let delta = normalizeAngle(to) - normalizeAngle(from);
+            if (delta > 180) delta -= 360;
+            if (delta < -180) delta += 360;
+            return delta;
+            }
+
+
+
+            wheel.addEventListener('pointerdown', e => {
+                if (e.target.closest('.menu-item')) return;
+              
+                    e.preventDefault();
+                    isDragging = true;
+                    wheel.setPointerCapture(e.pointerId);
+                    startAngle = getAngle(e);
+                    lastAngle = startAngle;
+                    wheel.style.transition = '';
+                });
+
+                wheel.addEventListener('pointermove', e => {
                 if (!isDragging) return;
                 e.preventDefault();
-                rotation = getAngle(e) - startAngle;
+
+                const current = getAngle(e);
+                const delta = getShortestRotation(lastAngle, current);
+                rotation += delta;
                 applyRotation(rotation);
-            });
+                lastAngle = current;
+                });
+
 
             wheel.addEventListener('pointerup', e => {
                 if (!isDragging) return;

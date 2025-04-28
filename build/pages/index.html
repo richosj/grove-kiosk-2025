@@ -1,265 +1,469 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <title>터치 회전 메뉴</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: none;
-        }
-        
-        body {
-            background-color: #333;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            font-family: Arial, sans-serif;
-        }
-        
-        .menu-container {
-            position: relative;
-            width: 500px;
-            height: 500px;
-            transform-origin: center;
-            touch-action: none;
-        }
-        
-        .wheel {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: white;
-            touch-action: none;
-        }
-        
-        .home-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background-color: #FFDD57;
-            border-radius: 50%;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .home-button svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-        }
-        
-        .menu-item {
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            transform-origin: center center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .menu-item .icon {
-            margin-bottom: 5px;
-        }
-        
-        .menu-item .label {
-            font-size: 10px;
-            text-align: center;
-            font-weight: bold;
-            color: #333;
-            line-height: 1.2;
-        }
-
-        #debug {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: white;
-            font-size: 14px;
-            z-index: 1000;
-        }
-    </style>
+    
+  <script type="module" crossorigin src="../assets/js/index.js"></script>
+  <link rel="stylesheet" crossorigin href="../assets/css/styles.css">
 </head>
+
 <body>
-    <div id="debug"></div>
-    <div class="menu-container">
-        <div class="wheel" id="wheel">
-            <div class="menu-item" style="top: 70px; left: 215px;">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
+    <nav class="nav" id="nav">
+        <div class="menu-container">
+            <div class="wheel" id="wheel">
+                <div class="menu-item menu-item-1">
+                    <div class="item-inner"><img src="../assets/images/m1.png" alt=""></div>
                 </div>
-                <div class="label">About Omlydo</div>
+    
+                <div class="menu-item menu-item-2">
+                    <div class="item-inner"><img src="../assets/images/m2.png" alt=""></div>
+                </div>
+    
+                <div class="menu-item menu-item-3">
+                    <div class="item-inner"><img src="../assets/images/m3.png" alt=""></div>
+                </div>
+    
+                <div class="menu-item menu-item-4">
+                    <div class="item-inner"><img src="../assets/images/m4.png" alt=""></div>
+                </div>
+    
+                <div class="menu-item menu-item-5">
+                    <div class="item-inner"><img src="../assets/images/m5.png" alt=""></div>
+                </div>
+    
+                <div class="menu-item menu-item-6">
+                    <div class="item-inner"><img src="../assets/images/m6.png" alt=""></div>
+                </div>
             </div>
-            
-            <div class="menu-item" style="top: 140px; left: 80px;">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                </div>
-                <div class="label">Features</div>
-            </div>
-            
-            <div class="menu-item" style="top: 300px; left: 80px;">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                </div>
-                <div class="label">Clinical Study</div>
-            </div>
-            
-            <div class="menu-item" style="top: 370px; left: 215px;">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
-                        <path d="M12 20V10M18 20V4M6 20v-4"></path>
-                    </svg>
-                </div>
-                <div class="label">Efficacy Data</div>
-            </div>
-            
-            <div class="menu-item" style="top: 300px; left: 350px;">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
-                        <path d="M13 17.3a9.9 9.9 0 0 1 4 2.1 10 10 0 1 0-14 0 9.9 9.9 0 0 1 4-2.1"></path>
-                        <line x1="13" y1="8" x2="13" y2="2"></line>
-                        <path d="M12 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
-                    </svg>
-                </div>
-                <div class="label">Safety Data</div>
-            </div>
-            
-            <div class="menu-item" style="top: 140px; left: 350px;">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24" width="30" height="30" stroke="#FFDD57" stroke-width="2" fill="none">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg>
-                </div>
-                <div class="label">PK/PD Data</div>
+    
+            <div class="home-button"></div>
+        </div>
+    </nav>    <div class="kiosk">
+        <div class="left" aria-label="좌측 메뉴">
+            <div>
+                <img src="../assets/images/left.png" alt="">
+                <button id="menuButton"></button>
             </div>
         </div>
-        
-        <div class="home-button">
-            <svg viewBox="0 0 24 24">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
-            </svg>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" aria-label="인트로 페이지">
+                    <div class="intro">
+                        <div class="intro-1"><img src="../assets/images/intro-txt_01.png" alt=""></div>
+                        <div class="intro-2"><img src="../assets/images/intro-txt_02.png" alt=""></div>
+                        <div class="intro-3"><img src="../assets/images/intro-txt_03.png" alt=""></div>
+                        <img src="../assets/images/1.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="1 페이지">
+                    <div class="page-1">
+                        <div class="title"><img src="../assets/images/page1-title.png" alt=""></div>
+                        <div class="content">
+                            <div class="item1"><img src="../assets/images/page1-img1.png" alt=""></div>
+                            <div class="item2">
+                                <img src="../assets/images/page1-img2.png" alt="">
+                                <div class="a"><img src="../assets/images/page1-1.png" alt=""></div>
+                                <div class="b"><img src="../assets/images/page1-2.png" alt=""></div>
+                                <div class="c"><img src="../assets/images/page1-3.png" alt=""></div>
+                            </div>
+                            <div class="item3"><img src="../assets/images/page1-img3.png" alt=""></div>
+                            <div class="item4"><img src="../assets/images/page1-img4.png" alt=""></div>
+                            <div class="item5"><img src="../assets/images/page1-img5.png" alt=""></div>
+                            <div class="item6"><img src="../assets/images/page1-img6.png" alt=""></div>
+                            <div class="item7"><img src="../assets/images/page1-img7.png" alt=""></div>
+                            <div class="item8">
+                                <div class="back"><img src="../assets/images/page1-img8.png" alt="">
+                                    <div class="flash flash-1"><img src="../assets/images/page1-flash1.png" alt=""></div>
+                                    <div class="flash flash-2"><img src="../assets/images/page1-flash2.png" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="foot"><img src="../assets/images/page1-foot.png" alt=""></div>
+                    </div>                </div>
+                <div class="swiper-slide" aria-label="2 페이지">
+                    <div class="background">
+                        <div class="page-2">
+                            <div class="title"><img src="../assets/images/page2-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page2-img1.png" alt=""></div>
+                                <div class="item2"><img src="../assets/images/page2-img2.png" alt=""></div>
+                                <div class="item3"><img src="../assets/images/page2-img3.png" alt=""></div>
+                                <div class="item4"><img src="../assets/images/page2-img4.png" alt=""></div>
+                                <div class="item5"><img src="../assets/images/page2-img5.png" alt=""></div>
+                                <div class="item6"><img src="../assets/images/page2-img6.png" alt=""></div>
+                                <div class="item7"><img src="../assets/images/page2-img7.png" alt=""></div>
+                                <div class="item8"><img src="../assets/images/page2-img8.png" alt=""></div>
+                                <div class="item9"><img src="../assets/images/page2-img9.png" alt=""></div>
+                                <div class="item10"><img src="../assets/images/page2-img10.png" alt=""></div>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page1-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="3 페이지">
+                    <div class="background">
+                        <div class="page-3">
+                            <div class="title"><img src="../assets/images/page3-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page3-img1.png" alt=""></div>
+                                <div class="item2"><img src="../assets/images/page3-img2.png" alt=""></div>
+                                <div class="item3">
+                                    <img src="../assets/images/page3.png" alt="">
+                                    <div class="bar-container a">
+                                        <div class="bar bar-1"></div>
+                                        <div class="line"><img src="../assets/images/num-l1.png" alt=""></div>
+                                        <div class="cont"><img src="../assets/images/page3-n1.png" alt=""></div>
+                                    </div>
+                                    <div class="bar-container b">
+                                        <div class="bar bar-2"></div>
+                                        <div class="line"><img src="../assets/images/num-l2.png" alt=""></div>
+                                        <div class="cont"><img src="../assets/images/page3-n2.png" alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="paging">
+                                <button class="current"></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page3-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="4 페이지">
+                    <div class="background">
+                        <div class="page-4">
+                            <div class="title"><img src="../assets/images/page4-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page4_01.png" alt=""></div>
+                                <div class="item2"><img src="../assets/images/page4_02.png" alt=""></div>
+                                <div class="item3"><img src="../assets/images/page4_03.png" alt=""></div>
+                                <div class="item4">
+                                    <img src="../assets/images/page4_04.png" alt="">
+                                    <div class="bar-conts bar-cont1"><div><div class="numbs">63.5</div><div class="bars"></div></div></div>
+                                    <div class="bar-conts bar-cont2"><div><div class="numbs">72.7</div><div class="bars"></div></div></div>
+                                    <div class="bar-conts bar-cont3"><div><div class="numbs">69.5</div><div class="bars"></div></div></div>
+                                    <div class="bar-conts bar-cont4"><div><div class="numbs">74.1</div><div class="bars"></div></div></div>
+                                    <div class="bar-conts bar-cont5"><div><div class="numbs">77.5</div><div class="bars"></div></div></div>
+                                    <div class="bar-conts bar-cont6"><div><div class="numbs">74</div><div class="bars"></div></div></div>
+                                    <div class="bar-conts bar-cont7"><div><div class="numbs">81.3</div><div class="bars"></div></div></div>
+                                </div>
+                            </div>
+                            <div class="paging">
+                                <button></button>
+                                <button class="current"></button>
+                                <button></button>
+                                <button></button>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page4-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="5 페이지">
+                    <div class="background">
+                        <div class="page-5">
+                            <div class="title"><img src="../assets/images/page5-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page5_02.png" alt=""></div>
+                                <div class="item2"><img src="../assets/images/page5_03.png" alt=""></div>
+                                <div class="item3"><img src="../assets/images/page5_04.png" alt=""></div>
+                                <div class="item4"><img src="../assets/images/page5_05.png" alt=""></div>
+                                <div class="item5"><img src="../assets/images/page5_06.png" alt=""></div>
+                                <div class="item6"><img src="../assets/images/page5_07.png" alt=""></div>
+                                <div class="item7"><img src="../assets/images/page5_08.png" alt=""></div>
+                            </div>
+                            <div class="paging">
+                                <button></button>
+                                <button></button>
+                                <button class="current"></button>
+                                <button></button>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page5-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="6 페이지">
+                    <div class="background">
+                        <div class="page-6">
+                            <div class="title"><img src="../assets/images/page6-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page6_02.png" alt=""></div>
+                                <div class="item2"><img src="../assets/images/page6_03.png" alt=""></div>
+                                <div class="item3">
+                                    <img src="../assets/images/page6_04.png" alt="">
+                                    <div class="bar-conts bar-cont1">
+                                        <div>
+                                            <div class="numbs">54.5</div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bar-conts bar-cont2">
+                                        <div>
+                                            <div class="numbs">47.9</div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bar-conts bar-cont3">
+                                        <div>
+                                            <div class="numbs">67.7</div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bar-conts bar-cont4">
+                                        <div>
+                                            <div class="numbs">40.1</div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bar-conts bar-cont5">
+                                        <div>
+                                            <div class="numbs">37.5</div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bar-conts bar-cont6">
+                                        <div>
+                                            <div class="numbs">51.0</div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item4"><img src="../assets/images/page6_05.png" alt=""></div>
+                                <div class="item5">
+                                    <img src="../assets/images/page6_06.png" alt="">
+                                    <div class="bar-conts bar-cont1">
+                                        <div>
+                                            <div class="line"><img src="../assets/images/page6-lin1.png" alt=""></div>
+                                            <div class="numbs">
+                                                93.47
+                                                <small>(17.95)</small>
+                                            </div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bar-conts bar-cont2">
+                                        <div>
+                                            <div class="line"><img src="../assets/images/page6-lin2.png" alt=""></div>
+                                            <div class="numbs">
+                                                90.14
+                                                <small>(25.64)</small>
+                                            </div>
+                                            <div class="bars"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="paging">
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button class="current"></button>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page6-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="7 페이지">
+                    <div class="background">
+                        <div class="page-7">
+                            <div class="title"><img src="../assets/images/page7-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page7-img1.png" alt=""></div>
+                                <div class="item3"><img src="../assets/images/page7-img3.png" alt=""></div>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page7-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="8 페이지">
+                    <div class="background">
+                        <div class="page-8">
+                            <div class="title"><img src="../assets/images/page8-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page8-img1.png" alt=""></div>
+                                <div class="item2"><img src="../assets/images/page8-img2.png" alt=""></div>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page8-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+                <div class="swiper-slide" aria-label="9 페이지">
+                    <div class="background">
+                        <div class="page-9">
+                            <div class="title"><img src="../assets/images/page9-title.png" alt=""></div>
+                            <div class="content">
+                                <div class="item1"><img src="../assets/images/page9-img1.png" alt=""></div>
+                                <div class="item2">
+                                    <img src="../assets/images/page9-obj1.png" alt="">
+                                    <div class="a"><img src="../assets/images/page9-1.png" alt=""></div>
+                                    <div class="b"><img src="../assets/images/page9-2.png" alt=""></div>
+                                    <div class="c"><img src="../assets/images/page9-3.png" alt=""></div>
+                                    <div class="d"><img src="../assets/images/page9-4.png" alt=""></div>
+                                </div>
+                                <div class="item3"><img src="../assets/images/page9-img2.png" alt=""></div>
+                                <div class="item4">
+                                    <img src="../assets/images/page9-obj2.png" alt="">
+                                    <div class="a"><img src="../assets/images/page9-5.png" alt=""></div>
+                                    <div class="b"><img src="../assets/images/page9-6.png" alt=""></div>
+                                    <div class="c"><img src="../assets/images/page9-7.png" alt=""></div>
+                                    <div class="d"><img src="../assets/images/page9-8.png" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="foot"><img src="../assets/images/page9-foot.png" alt=""></div>
+                        </div>                    </div>
+                </div>
+            </div>
+            <!-- <div class="swiper-pagination"></div> -->
+        </div>
+
+        <div class="kiosk-footer">
+            <img src="../assets/images/footer.png">
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+    
     <script>
-        document.addEventListener('DOMContentLoaded', ()=> {
-        const wheel = document.getElementById('wheel');
-        const debug = document.getElementById('debug');
-        const menuItems = wheel.querySelectorAll('.menu-item');
-
-        let rotation = 0;
-        let startAngle = 0;
-        let isDragging = false;
-
-        function getAngleFromEvent(e) {
-            const rect = wheel.getBoundingClientRect();
-            const x = e.clientX - (rect.left + rect.width/2);
-            const y = e.clientY - (rect.top + rect.height/2);
-            return Math.atan2(y, x) * 180 / Math.PI;
-        }
-
-        function applyRotation(rot) {
-            wheel.style.transform = `rotate(${rot}deg)`;
-            menuItems.forEach(item => {
-            item.style.transform = `rotate(${-rot}deg)`;  // 메뉴 항상 upright
+        document.addEventListener('DOMContentLoaded', () => {
+            const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            //initialSlide: 6,
+            on: {
+                init() {
+                    setTimeout(function(){
+                        document.querySelector('.intro').classList.add('init')
+                    },1000)
+                    
+                },
+                slideChange() {
+                    menuButton.classList.remove('on');
+            nav.classList.remove('show');
+                }
+            }
             });
-        }
 
-        wheel.addEventListener('pointerdown', e => {
-            e.preventDefault();
-            isDragging = true;
-            wheel.setPointerCapture(e.pointerId);
-            startAngle = getAngleFromEvent(e) - rotation;
-            wheel.style.transition = '';
-            debug.textContent = `시작: ${rotation.toFixed(1)}°`;
-        });
+            const menuButton = document.getElementById('menuButton');
+            const nav = document.getElementById('nav');
 
-        wheel.addEventListener('pointermove', e => {
-            if (!isDragging) return;
-            e.preventDefault();
-            rotation = getAngleFromEvent(e) - startAngle;
-            applyRotation(rotation);
-            debug.textContent = `회전 중: ${rotation.toFixed(1)}°`;
-        });
-
-        wheel.addEventListener('pointerup', e => {
-            if (!isDragging) return;
-            e.preventDefault();
-            isDragging = false;
-            wheel.releasePointerCapture(e.pointerId);
-
-            // 60° 단위로 스냅
-            const snap = 60;
-            rotation = Math.round(rotation / snap) * snap;
-            wheel.style.transition = 'transform 0.3s ease-out';
-            menuItems.forEach(it => it.style.transition = 'transform 0.3s ease-out');
-            applyRotation(rotation);
-            debug.textContent = `스냅: ${rotation.toFixed(1)}°`;
-
-            setTimeout(()=>{
-            wheel.style.transition = '';
-            menuItems.forEach(it => it.style.transition = '');
-            }, 300);
-        });
-
-        wheel.addEventListener('pointercancel', e => {
-            if (!isDragging) return;
-            isDragging = false;
-            wheel.releasePointerCapture(e.pointerId);
-        });
-
-        // 홈 버튼 리셋
-        document.querySelector('.home-button').addEventListener('click', ()=> {
-            rotation = 0;
-            wheel.style.transition = 'transform 0.5s ease-out';
-            menuItems.forEach(it => it.style.transition = 'transform 0.5s ease-out');
-            applyRotation(0);
-            setTimeout(()=>{
-            wheel.style.transition = '';
-            menuItems.forEach(it => it.style.transition = '');
-            }, 500);
-            debug.textContent = '홈 클릭';
-        });
-
-        // 메뉴 클릭
-        menuItems.forEach(item => {
-            item.addEventListener('click', e => {
-            e.stopPropagation();
-            debug.textContent = `선택: ${item.querySelector('.label').textContent}`;
-            // 추가 처리
+            document.querySelector('.menu-item-1')?.addEventListener('click', () => {
+                // Item 1 동작
+                swiper.slideTo(2)
             });
-        });
+
+            document.querySelector('.menu-item-2')?.addEventListener('click', () => {
+                // Item 2 동작
+                swiper.slideTo(3)
+            });
+
+            document.querySelector('.menu-item-3')?.addEventListener('click', () => {
+            // Item 3 동작
+            swiper.slideTo(4)
+            });
+
+            document.querySelector('.menu-item-4')?.addEventListener('click', () => {
+            // Item 4 동작
+            swiper.slideTo(7)
+            });
+
+            document.querySelector('.menu-item-5')?.addEventListener('click', () => {
+            // Item 5 동작
+            swiper.slideTo(8)
+            
+            });
+
+            document.querySelector('.menu-item-6')?.addEventListener('click', () => {
+            // Item 6 동작
+            swiper.slideTo(9)
+            })
+            document.querySelector('.home-button')?.addEventListener('click', () => {
+            // Item 6 동작
+            swiper.slideTo(0)
+            })
+            
+
+            menuButton.addEventListener('click', () => {
+                menuButton.classList.toggle('on');
+                nav.classList.toggle('show');
+            });
+
+
+            const wheel = document.getElementById('wheel');
+            let rotation = 0;
+            let startAngle = 0;
+            let isDragging = false;
+
+            function getAngle(e) {
+                const rect = wheel.getBoundingClientRect();
+                const x = (e.clientX ?? e.touches[0].clientX) - (rect.left + rect.width/2);
+                const y = (e.clientY ?? e.touches[0].clientY) - (rect.top  + rect.height/2);
+                return Math.atan2(y, x) * 180 / Math.PI;
+            }
+
+            function applyRotation(rot) {
+                wheel.style.transform = `rotate(${rot}deg)`;
+
+                // 메뉴가 휠과 같이 회전하되, 내용물은 반대로 보정
+                const inners = wheel.querySelectorAll('.item-inner');
+                inners.forEach(inner => {
+                    inner.style.transform = `rotate(${-rot}deg)`;
+                });
+            }
+
+            function normalizeAngle(angle) {
+            return (angle + 360) % 360;
+            }
+
+            function getShortestRotation(from, to) {
+            let delta = normalizeAngle(to) - normalizeAngle(from);
+            if (delta > 180) delta -= 360;
+            if (delta < -180) delta += 360;
+            return delta;
+            }
+
+
+
+            wheel.addEventListener('pointerdown', e => {
+                if (e.target.closest('.menu-item')) return;
+              
+                    e.preventDefault();
+                    isDragging = true;
+                    wheel.setPointerCapture(e.pointerId);
+                    startAngle = getAngle(e);
+                    lastAngle = startAngle;
+                    wheel.style.transition = '';
+                });
+
+                wheel.addEventListener('pointermove', e => {
+                if (!isDragging) return;
+                e.preventDefault();
+
+                const current = getAngle(e);
+                const delta = getShortestRotation(lastAngle, current);
+                rotation += delta;
+                applyRotation(rotation);
+                lastAngle = current;
+                });
+
+
+            wheel.addEventListener('pointerup', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                wheel.releasePointerCapture(e.pointerId);
+                rotation = Math.round(rotation / 60) * 60;    // 60° 스냅
+                wheel.style.transition = 'transform 0.3s ease-out';
+                applyRotation(rotation);
+                setTimeout(() => wheel.style.transition = '', 300);
+            });
+
+            wheel.addEventListener('pointercancel', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                wheel.releasePointerCapture(e.pointerId);
+            });
         });
 
     </script>
 </body>
+
 </html>
