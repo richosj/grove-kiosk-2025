@@ -1,0 +1,74 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+
+
+
+.page-3{
+    .content{
+        padding-top: 170px;
+    }
+}
+
+.bar-container {
+    width: 225px;
+    display: flex;
+    // align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+    top: 1282px;
+    height: 620px;
+&.a{
+    left: 792px;
+    .line{
+    bottom: 187px;
+    }
+}
+&.b{
+    left: 1432px;
+    .line{
+    bottom: 145px;
+    }
+}
+.cont{
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transform: translateY(-50px);
+}
+.line{
+    position: absolute;
+    opacity: 0;
+    
+}
+}
+  
+  .bar {
+    width: 100%;
+    height: 0;
+    transition: all 1.3s 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+    border-radius: 0 0 100px 100px;
+    overflow: hidden;
+    height: 0;
+    &-1{
+      background-color: #67aae4;
+    }
+    &-2{
+      background-color: #d6d4d4;
+    }
+  }
+  .swiper-slide-active{
+    .page-3{
+      .bar-1{height: 400px;}
+      .bar-2{height: 444px;}
+      .line,
+      .cont{
+        opacity: 1;
+        transition: all 1.2s 1s cubic-bezier(0.33, 1, 0.68, 1);
+        transform: translateY(0);
+      }
+    }
+  }

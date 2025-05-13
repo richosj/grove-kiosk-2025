@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <title>터치 회전 메뉴</title>
+    <title>The 1st Omlyclo</title>
     
 </head>
 
@@ -18,14 +18,21 @@
                 <button id="menuButton"></button>
             </div>
         </div>
+
+        <div class="popup2 popup">
+            <div class="popup-content"><img src="/assets/page2/popup.png" alt=""></div>
+        </div>
+
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" aria-label="인트로 페이지">
                     <div class="intro">
-                        <!-- <div class="intro-1"><img src="/assets/images/intro-txt_01.png" alt=""></div>
+                        <div class="intro-top"><img src="/assets/images/intro-top.png" alt=""></div>
+                        <div class="intro-1"><img src="/assets/images/intro-txt_01.png" alt=""></div>
                         <div class="intro-2"><img src="/assets/images/intro-txt_02.png" alt=""></div>
-                        <div class="intro-3"><img src="/assets/images/intro-txt_03.png" alt=""></div> -->
-                        <img src="/assets/images/intro.png" alt="">
+                        <div class="intro-3"><img src="/assets/images/intro-txt_03.png" alt=""></div>
+                        <div class="intro-4"><img src="/assets/images/intro-logo.png" alt=""></div>
+                        <img src="/assets/images/intros.png" alt="">
                     </div>
                 </div>
                 <div class="swiper-slide" aria-label="1 페이지">
@@ -66,11 +73,11 @@
                         {{> page8}}
                     </div>
                 </div>
-                <div class="swiper-slide" aria-label="9 페이지">
+                <!-- <div class="swiper-slide" aria-label="9 페이지">
                     <div class="background">
                         {{> page9}}
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- <div class="swiper-pagination"></div> -->
         </div>
@@ -86,10 +93,13 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menuButton');
+            const nav = document.getElementById('nav');
+            
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            //initialSlide: 6,
+            //initialSlide: 8,
             on: {
                 init() {
                     setTimeout(function(){
@@ -99,13 +109,12 @@
                 },
                 slideChange() {
                     menuButton.classList.remove('on');
-            nav.classList.remove('show');
+                    nav.classList.remove('show');
                 }
             }
             });
 
-            const menuButton = document.getElementById('menuButton');
-            const nav = document.getElementById('nav');
+            
 
             document.querySelector('.menu-item-1')?.addEventListener('click', () => {
                 // Item 1 동작
@@ -137,15 +146,12 @@
             // Item 6 동작
             swiper.slideTo(9)
             })
-            document.querySelector('.home-button')?.addEventListener('click', () => {
-            // Item 6 동작
-            swiper.slideTo(0)
-            })
+            
             
             // 각 페이지의 paging 버튼 클릭 이벤트 추가
             document.querySelectorAll('.swiper-slide').forEach((slide, slideIndex) => {
                 slide.querySelectorAll('.paging button').forEach((button, buttonIndex) => {
-                    button.addEventListener('click', () => {                        
+                    button.addEventListener('click', () => {
                         swiper.slideTo(buttonIndex + 3);
                     });
                 });
@@ -154,6 +160,14 @@
             menuButton.addEventListener('click', () => {
                 menuButton.classList.toggle('on');
                 nav.classList.toggle('show');
+            });
+
+            document.querySelector('.popup-button')?.addEventListener('click', () => {
+                document.querySelector('.popup2').classList.toggle('show');
+            });
+
+            document.querySelector('.popup2')?.addEventListener('click', () => {
+                document.querySelector('.popup2').classList.remove('show');
             });
 
             

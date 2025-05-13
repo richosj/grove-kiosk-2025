@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+
+
+.page-7{
+    .content{
+        padding-top: 170px;
+    }
+}
+
+
+.page-7{
+    .item2{
+        position: relative;
+    }
+    .gh-img{
+        position: absolute;
+        bottom: 1170px;
+        left: 467px;
+        overflow: hidden;
+        clip-path: inset(100% 0 0 0); 
+        transition: all 4s 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+        .imgover{
+            height: 715px;
+            position: relative;
+            width: 1565px;
+            img{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 715px;
+            }
+        }
+    }
+}
+
+.swiper-slide-active{
+    .page-7{
+        .item2{
+            .gh-img{
+                clip-path: inset(0 0 0 0); // 점점 보여짐
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+
+.page-8{
+    .content{
+        padding-top: 170px;
+    }
+}
+
+.page-8{
+    .item2{
+      position: relative;
+    }
+    .gh-img{
+        position: absolute;
+        top: 479px;
+        left: 680px;
+        width: 0;
+        overflow: hidden;
+        transition: all 3s 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+        .imgover{
+            width: 1298px;
+        }
+    }
+  }
+  
+  .swiper-slide-active{
+    .page-8{
+      .gh-img{
+        width: 1298px;
+      }
+    }
+  }

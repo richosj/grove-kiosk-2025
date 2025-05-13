@@ -23,3 +23,9 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+
+# ----------------------------
+# 프로젝트 폴더
+# ----------------------------
+자료/
+자료.zip
