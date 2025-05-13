@@ -22,10 +22,10 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide" aria-label="인트로 페이지">
                     <div class="intro">
-                        <div class="intro-1"><img src="/assets/images/intro-txt_01.png" alt=""></div>
+                        <!-- <div class="intro-1"><img src="/assets/images/intro-txt_01.png" alt=""></div>
                         <div class="intro-2"><img src="/assets/images/intro-txt_02.png" alt=""></div>
-                        <div class="intro-3"><img src="/assets/images/intro-txt_03.png" alt=""></div>
-                        <img src="/assets/images/1.png" alt="">
+                        <div class="intro-3"><img src="/assets/images/intro-txt_03.png" alt=""></div> -->
+                        <img src="/assets/images/intro.png" alt="">
                     </div>
                 </div>
                 <div class="swiper-slide" aria-label="1 페이지">
@@ -142,13 +142,25 @@
             swiper.slideTo(0)
             })
             
+            // 각 페이지의 paging 버튼 클릭 이벤트 추가
+            document.querySelectorAll('.swiper-slide').forEach((slide, slideIndex) => {
+                slide.querySelectorAll('.paging button').forEach((button, buttonIndex) => {
+                    button.addEventListener('click', () => {                        
+                        swiper.slideTo(buttonIndex + 3);
+                    });
+                });
+            });
 
             menuButton.addEventListener('click', () => {
                 menuButton.classList.toggle('on');
                 nav.classList.toggle('show');
             });
 
+            
 
+
+
+            /*
             const wheel = document.getElementById('wheel');
             let rotation = 0;
             let startAngle = 0;
@@ -222,6 +234,7 @@
                 isDragging = false;
                 wheel.releasePointerCapture(e.pointerId);
             });
+            */
         });
 
     </script>
