@@ -15,7 +15,6 @@ export default defineConfig(({ mode }) => {
 
   const pagesPath = path.resolve(__dirname, 'src/pages')
 
-  // ✅ 이게 먼저 있어야 함
   const pageFiles = fs.readdirSync(pagesPath)
     .filter(file => file.endsWith('.html') && file !== 'link-page.html')
 
