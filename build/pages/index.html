@@ -71,7 +71,7 @@
                 </div>
                 <div class="swiper-slide" aria-label="1 페이지">
                     <div class="page-1">
-                        <div class="title"><img src="../assets/page1/page1-title.png" alt=""></div>
+                        <div class="title"><img src="../assets/page1/page1-title.png" alt=""><span>Introduction to <em>Omlyclo</em></span></div>
                         <div class="content">
                             <div class="item2">
                                 <img src="../assets/page1/page1-img2.png" alt="">
@@ -99,6 +99,7 @@
                             <div class="content">
                                 <div class="item1"><img src="../assets/page2/img_01.png" alt="">
                                     <button class="popup-button">
+                                        <img src="../assets/page2/!.png" alt="" class="q">
                                         <div class="tev_home_hand_box">
                                             <div class="tev_home_hand_box_first">
                                                 <img src="../assets/page2/hand.png" alt="">
@@ -115,7 +116,11 @@
                                 <div class="item2">
                                     <img src="../assets/page2/img_02.png" alt="">
                                 </div>
-                                <div class="item3"><img src="../assets/page2/img_03.png" alt=""></div>
+                                <div class="item3">
+                                    <div class="txt1"><img src="../assets/page2/txt1.png" alt=""></div>
+                                    <div class="txt2"><img src="../assets/page2/txt2.png" alt=""></div>
+                                    <div class="txt3"><img src="../assets/page2/txt3.png" alt=""></div>
+                                </div>
                             </div>
                             <div class="foot">
                                 <div><b>CFB,</b> change from baseline; <b>CSU,</b> chronic spontaneous urticaria; <b>ISS7,</b> weekly itch severity score; <b>OMA,</b> omalizumab; <b>PK,</b> pharmacokinetics;<br> <b>QoL,</b> quality of life.</div>
@@ -331,7 +336,7 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 0,
+            initialSlide: 2,
             on: {
                 init() {
                     setTimeout(function(){
@@ -346,21 +351,23 @@
             }
             });
 
-            
+            document.querySelector('.home-button')?.addEventListener('click', () => {
+                swiper.slideTo(0)
+            });
 
             document.querySelector('.menu-item-1')?.addEventListener('click', () => {
                 // Item 1 동작
-                swiper.slideTo(2)
+                swiper.slideTo(1)
             });
 
             document.querySelector('.menu-item-2')?.addEventListener('click', () => {
                 // Item 2 동작
-                swiper.slideTo(3)
+                swiper.slideTo(2)
             });
 
             document.querySelector('.menu-item-3')?.addEventListener('click', () => {
             // Item 3 동작
-            swiper.slideTo(4)
+            swiper.slideTo(3)
             });
 
             document.querySelector('.menu-item-4')?.addEventListener('click', () => {
@@ -368,16 +375,6 @@
             swiper.slideTo(7)
             });
 
-            document.querySelector('.menu-item-5')?.addEventListener('click', () => {
-            // Item 5 동작
-            swiper.slideTo(8)
-            
-            });
-
-            document.querySelector('.menu-item-6')?.addEventListener('click', () => {
-            // Item 6 동작
-            swiper.slideTo(9)
-            })
             
             // 각 페이지의 paging 버튼 클릭 이벤트 추가
             document.querySelectorAll('.swiper-slide').forEach((slide, slideIndex) => {

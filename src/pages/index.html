@@ -98,7 +98,7 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            initialSlide: 0,
+            initialSlide: 2,
             on: {
                 init() {
                     setTimeout(function(){
@@ -113,21 +113,23 @@
             }
             });
 
-            
+            document.querySelector('.home-button')?.addEventListener('click', () => {
+                swiper.slideTo(0)
+            });
 
             document.querySelector('.menu-item-1')?.addEventListener('click', () => {
                 // Item 1 동작
-                swiper.slideTo(2)
+                swiper.slideTo(1)
             });
 
             document.querySelector('.menu-item-2')?.addEventListener('click', () => {
                 // Item 2 동작
-                swiper.slideTo(3)
+                swiper.slideTo(2)
             });
 
             document.querySelector('.menu-item-3')?.addEventListener('click', () => {
             // Item 3 동작
-            swiper.slideTo(4)
+            swiper.slideTo(3)
             });
 
             document.querySelector('.menu-item-4')?.addEventListener('click', () => {
@@ -135,16 +137,6 @@
             swiper.slideTo(7)
             });
 
-            document.querySelector('.menu-item-5')?.addEventListener('click', () => {
-            // Item 5 동작
-            swiper.slideTo(8)
-            
-            });
-
-            document.querySelector('.menu-item-6')?.addEventListener('click', () => {
-            // Item 6 동작
-            swiper.slideTo(9)
-            })
             
             // 각 페이지의 paging 버튼 클릭 이벤트 추가
             document.querySelectorAll('.swiper-slide').forEach((slide, slideIndex) => {
