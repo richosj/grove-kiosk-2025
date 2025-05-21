@@ -6,42 +6,94 @@
 @use '../utils/mixins' as *;
 
 
+
 .page-5{
     .content{
         padding-top: 170px;
     }
 }
 .page-5{
-    .item2{
-      position: relative;
-    }
+  .item2,
+  .item3,
+  .item4{
+    position: relative;
+  }
+  .item2{
     .gh-img{
-        position: absolute;
-        top: 533px;
-        left: 480px;
-        width: 0;
-        overflow: hidden;
-        transition: all 3s 0.3s cubic-bezier(0.33, 1, 0.68, 1);
-        .imgover{
-            width: 1490px;
+      bottom: 245px;
+      left: 673px;
+      .imgover{
+        width: 1047px;
+        height: 388px;
+        img{
+          height: 388px;
         }
-    }
-    .switch{
-        position: absolute;
-        top: 439px;
-        right: 142px;
-        opacity: 0;
+      }
     }
   }
-  
-  .swiper-slide-active{
-    .page-5{
+  .item3{
+    
+    .gh-img{
+      bottom: 116px;
+      left: 667px;
+      .imgover{
+        width: 1164px;
+        height: 493px;
+        img{
+          height: 493px;
+        }
+      }
+    }
+  }
+  .item4{
+    .gh-img{
+      bottom: 137px;
+      left: 820px;
+      .imgover{
+        width: 782px;
+        height: 619px;
+        img{
+          height: 619px;
+        }
+      }
+    }
+  }
+  .gh-img{
+      position: absolute;
+      overflow: hidden;
+      clip-path: inset(100% 0 0 0);
+      transition: all 4s 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+      .imgover{
+          //height: 544px;
+          position: relative;
+          //width: 1565px;
+          img{
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              //height: 544px;
+          }
+      }
+  }
+}
+
+.swiper-slide-active{
+  .page-5{
+    .item2{
       .gh-img{
-        width: 1490px;
-      }
-      .switch{
-        opacity: 1;
-        transition: all 1s 1.5s cubic-bezier(0.33, 1, 0.68, 1);
+        clip-path: inset(0 0 0 0); // 점점 보여짐
       }
     }
+    .item3{
+      .gh-img{
+        clip-path: inset(0 0 0 0); // 점점 보여짐
+      }
+    }
+    .item4{
+      .gh-img{
+        clip-path: inset(0 0 0 0); // 점점 보여짐
+      }
+    }
+
   }
+}

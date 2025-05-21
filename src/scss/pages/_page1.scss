@@ -1,0 +1,111 @@
+
+@keyframes flash {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  .flash {
+    animation: flash 1s infinite;
+  }
+  
+.page-1{
+    position: relative;
+  }
+  
+  .page-1{
+    .title{
+      margin-bottom: 80px;
+      padding: 0;
+      padding-top: 170px;
+    }
+    .content{
+      padding-left: 155px;
+    }
+    .item1{
+      margin-bottom: 95px;
+    }
+    .item3{
+      margin: 118px 0 50px;
+    }
+    .item4{
+      padding-left: 120px;
+    }
+    .item5{
+      padding-top: 110px;
+      padding-bottom: 40px;
+    }
+    .item7{
+      margin: 110px 0 40px;
+    }
+    .item8{
+      position: relative;
+      margin-left: 80px;
+    }
+    
+  }
+  
+  
+  .page-1{
+    .back{
+      position: relative;
+      .flash{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .flash-1{left: 972px;top: 57px;}
+      .flash-2{    left: 359px;top: 297px;}
+    }
+    .content{
+      > div{
+        transition: all 1s;
+      }
+      .item1{opacity: 1;}
+      .item2{
+        position: relative;
+        div{
+          transition: all 1s;
+          position: absolute;
+          top: 0;
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        .a{left: 0;transition-delay: 0.4s;}
+        .b{left: 650px;transition-delay: 0.6s;}
+        .c{left: 1300px;transition-delay: 0.8s;}
+      }
+      .item6{
+        margin-left: 40px;
+      }
+      @for $i from 3 through 8 {
+        .item#{$i} {
+          opacity: 0;
+          transform: translateY(100px);
+        }
+      }
+    }
+  }
+  .swiper-slide-active{
+    .page-1{
+      .content{
+        .item1{opacity: 1;transition-delay: 0.2s;}
+        .item2{
+          .a,.b,.c{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+        @for $i from 3 through 8 {
+          .item#{$i} {
+            opacity: 1;
+            transform: translateY(0px);
+            transition-delay: #{($i * 0.15)}s;
+          }
+        }
+      }
+    }
+  }

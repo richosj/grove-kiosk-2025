@@ -21,18 +21,17 @@
 
         <div class="popup2 popup">
             <div class="popup-content"><img src="/assets/page2/popup.png" alt=""></div>
+            <div class="overlay"></div>
         </div>
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" aria-label="인트로 페이지">
+                <div class="slide1 swiper-slide" aria-label="인트로 페이지">
                     <div class="intro">
-                        <!-- <div class="intro-top"><img src="/assets/images/intro-top.png" alt=""></div>
-                        <div class="intro-1"><img src="/assets/images/intro-txt_01.png" alt=""></div>
-                        <div class="intro-2"><img src="/assets/images/intro-txt_02.png" alt=""></div>
-                        <div class="intro-3"><img src="/assets/images/intro-txt_03.png" alt=""></div>
-                        <div class="intro-4"><img src="/assets/images/intro-logo.png" alt=""></div> -->
-                        <img src="/assets/images/123.png" alt="">
+                        <div class="intro-1"><img src="/assets/images/txt1.png" alt=""></div>
+                        <div class="intro-2"><img src="/assets/images/txt2.png" alt=""></div>
+                        <div class="intro-3"><img src="/assets/images/txt3.png" alt=""></div>
+                        <div class="intro-img"><img src="/assets/images/intro-bg.png" alt=""></div>
                     </div>
                 </div>
                 <div class="swiper-slide" aria-label="1 페이지">
@@ -58,21 +57,21 @@
                         {{> page5}}
                     </div>
                 </div>
-                <div class="swiper-slide" aria-label="6 페이지">
+                <!-- <div class="swiper-slide" aria-label="6 페이지">
                     <div class="background">
                         {{> page6}}
                     </div>
-                </div>
+                </div> -->
                 <div class="swiper-slide" aria-label="7 페이지">
                     <div class="background">
                         {{> page7}}
                     </div>
                 </div>
-                <div class="swiper-slide" aria-label="8 페이지">
+                <!-- <div class="swiper-slide" aria-label="8 페이지">
                     <div class="background">
                         {{> page8}}
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="swiper-slide" aria-label="9 페이지">
                     <div class="background">
                         {{> page9}}
@@ -99,7 +98,7 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            //initialSlide: 8,
+            initialSlide: 0,
             on: {
                 init() {
                     setTimeout(function(){
@@ -146,7 +145,6 @@
             // Item 6 동작
             swiper.slideTo(9)
             })
-            
             
             // 각 페이지의 paging 버튼 클릭 이벤트 추가
             document.querySelectorAll('.swiper-slide').forEach((slide, slideIndex) => {

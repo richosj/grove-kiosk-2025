@@ -6,7 +6,7 @@
 }
 .paging{
   position: absolute;
-  bottom: 135px;
+  bottom: 120px;
   left: 35px;
   right: 35px;
   display: flex;
@@ -85,6 +85,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 
@@ -92,19 +93,29 @@
   position: absolute;
   width: 272px;
   height: 280px;
-  transform-origin: center center;
-  pointer-events: none;
   cursor: pointer;
-  background-color: #000;
-  img{
-    pointer-events: none; /* 클릭 이벤트 안 잡게 */
-  }
+  
 }
-.menu-item-1{left: 851px;top: 156px;}
-.menu-item-2{left: 1360px;top: 540px;}
-.menu-item-3{left: 1360px;top: 1100px;}
-.menu-item-4{left: 851px;top: 1480px;}
-.menu-item-5{left: 315px;top: 1100px;}
+.menu-item-1{
+left: 743px;
+top: 156px;
+width: 381px;
+height: 441px;
+}
+.menu-item-2{
+  left: 1210px;
+  top: 740px;
+  width: 519px;
+  height: 326px;
+}
+.menu-item-3{left: 743px;top: 1270px;
+  width: 364px;
+  height: 331px;
+}
+.menu-item-4{left: 151px;top: 740px;
+  width: 572px;
+  height: 311px;}
+//.menu-item-5{left: 315px;top: 1100px;}
 // .menu-item-6{left: 315px;top: 540px;}
 
 
