@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2160, height=3840, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <title>The 1st Omlyclo</title>
-    
+    <link rel="stylesheet" href="/scss/main.scss">
 </head>
 
 <body>
@@ -18,20 +17,19 @@
                 <button id="menuButton"></button>
             </div>
         </div>
-
         <div class="popup2 popup">
             <div class="popup-content"><img src="/assets/page2/popup.png" alt=""></div>
             <div class="overlay"></div>
         </div>
-
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="slide1 swiper-slide" aria-label="인트로 페이지">
                     <div class="intro">
-                        <div class="intro-1"><img src="/assets/images/txt1.png" alt=""></div>
+                        <!-- <div class="intro-1"><img src="/assets/images/txt1.png" alt=""></div>
                         <div class="intro-2"><img src="/assets/images/txt2.png" alt=""></div>
-                        <div class="intro-3"><img src="/assets/images/txt3.png" alt=""></div>
-                        <div class="intro-img"><img src="/assets/images/intro-bg.png" alt=""></div>
+                        <div class="intro-3"><img src="/assets/images/txt3.png" alt=""></div> -->
+                        <div class="intro-1"><img src="/assets/images/t.png" alt=""></div>
+                        <div class="intro-img"><img src="/assets/images/intro-bg2.png" alt=""></div>
                     </div>
                 </div>
                 <div class="swiper-slide" aria-label="1 페이지">
@@ -159,86 +157,6 @@
             document.querySelector('.popup2')?.addEventListener('click', () => {
                 document.querySelector('.popup2').classList.remove('show');
             });
-
-            
-
-
-
-            /*
-            const wheel = document.getElementById('wheel');
-            let rotation = 0;
-            let startAngle = 0;
-            let isDragging = false;
-
-            function getAngle(e) {
-                const rect = wheel.getBoundingClientRect();
-                const x = (e.clientX ?? e.touches[0].clientX) - (rect.left + rect.width/2);
-                const y = (e.clientY ?? e.touches[0].clientY) - (rect.top  + rect.height/2);
-                return Math.atan2(y, x) * 180 / Math.PI;
-            }
-
-            function applyRotation(rot) {
-                wheel.style.transform = `rotate(${rot}deg)`;
-
-                // 메뉴가 휠과 같이 회전하되, 내용물은 반대로 보정
-                const inners = wheel.querySelectorAll('.item-inner');
-                inners.forEach(inner => {
-                    inner.style.transform = `rotate(${-rot}deg)`;
-                });
-            }
-
-            function normalizeAngle(angle) {
-            return (angle + 360) % 360;
-            }
-
-            function getShortestRotation(from, to) {
-            let delta = normalizeAngle(to) - normalizeAngle(from);
-            if (delta > 180) delta -= 360;
-            if (delta < -180) delta += 360;
-            return delta;
-            }
-
-
-
-            wheel.addEventListener('pointerdown', e => {
-                if (e.target.closest('.menu-item')) return;
-              
-                    e.preventDefault();
-                    isDragging = true;
-                    wheel.setPointerCapture(e.pointerId);
-                    startAngle = getAngle(e);
-                    lastAngle = startAngle;
-                    wheel.style.transition = '';
-                });
-
-                wheel.addEventListener('pointermove', e => {
-                if (!isDragging) return;
-                e.preventDefault();
-
-                const current = getAngle(e);
-                const delta = getShortestRotation(lastAngle, current);
-                rotation += delta;
-                applyRotation(rotation);
-                lastAngle = current;
-                });
-
-
-            wheel.addEventListener('pointerup', e => {
-                if (!isDragging) return;
-                isDragging = false;
-                wheel.releasePointerCapture(e.pointerId);
-                rotation = Math.round(rotation / 60) * 60;    // 60° 스냅
-                wheel.style.transition = 'transform 0.3s ease-out';
-                applyRotation(rotation);
-                setTimeout(() => wheel.style.transition = '', 300);
-            });
-
-            wheel.addEventListener('pointercancel', e => {
-                if (!isDragging) return;
-                isDragging = false;
-                wheel.releasePointerCapture(e.pointerId);
-            });
-            */
         });
 
     </script>

@@ -5,7 +5,7 @@
 
 // base 스타일 (reset 등)
 @use 'base/reset';
-
+@use 'base/swiper-bundle.min.css';
 // layout, components, pages → 전부 index로 forward한 구조니까 단일 import
 @use 'pages';
 

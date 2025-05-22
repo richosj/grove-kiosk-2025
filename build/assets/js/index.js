@@ -35,5 +35,4 @@
     fetch(link.href, fetchOpts);
   }
 })();
-document.addEventListener("DOMContentLoaded", () => {
-});
+i;
