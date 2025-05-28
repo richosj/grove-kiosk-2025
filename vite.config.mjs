@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
   const isLocalBuild = mode === 'localbuild'
   const projectName = 'grove-kiosk-2025'
 
-  const pagesPath = path.resolve(__dirname, 'src/pages')
+  const pagesPath = path.resolve(__dirname, 'src')
 
   const pageFiles = fs.readdirSync(pagesPath)
     .filter(file => file.endsWith('.html') && file !== 'link-page.html')
@@ -58,7 +58,7 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       rollupOptions: {
         input: Object.fromEntries(
-          glob.sync('src/pages/*.html').map(file => {
+          glob.sync('src/*.html').map(file => {
             const name = path.basename(file, '.html')
             return [name, path.resolve(__dirname, file)]
           })

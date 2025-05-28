@@ -21,30 +21,54 @@
       margin-bottom: 80px;
       padding: 0;
       padding-top: 160px;
+      position: relative;
     }
+
+     .popup-button {
+        position: absolute;
+        top: 499px;
+        right: 215px;
+        width: 242px;
+        height: 170px;
+        .q{
+        position: absolute;
+        top: 36px;
+        left: 107px;
+        display: block;
+        animation: linear click_ani_03 3s infinite;
+      }
+    }
+
     .content{
       padding-left: 155px;
     }
     .item1{
       margin-bottom: 95px;
     }
+    .item2{
+      margin-left: -155px;
+      position: relative;
+      text-align: center;
+    }
     .item3{
-      margin: 118px 0 50px;
+      margin: 140px 0 0;
     }
     .item4{
-      padding-left: 120px;
+      //padding-left: 120px;
     }
     .item5{
       padding-top: 110px;
       padding-bottom: 40px;
     }
     .item7{
-      margin: 110px 0 40px;
+      margin: 220px 0 70px;
     }
     .item8{
       position: relative;
-      margin-left: 80px;
+      margin-left: 15px;
     }
+
+
     
   }
   
@@ -57,8 +81,10 @@
         top: 0;
         left: 0;
       }
-      .flash-1{left: 972px;top: 57px;}
-      .flash-2{    left: 359px;top: 297px;}
+      .flash-1{    left: 975px;
+        top: 96px;}
+      .flash-2{        left: 349px;
+        top: 337px;}
     }
     .content{
       > div{
@@ -74,9 +100,9 @@
           opacity: 0;
           transform: translateY(50px);
         }
-        .a{left: 0;transition-delay: 0.4s;}
-        .b{left: 650px;transition-delay: 0.6s;}
-        .c{left: 1300px;transition-delay: 0.8s;}
+        .a{left: 320px;transition-delay: 0.4s;}
+        .b{left: 920px;transition-delay: 0.6s;}
+        .c{left: 1523px;transition-delay: 0.8s;}
       }
       .item6{
         margin-left: 40px;

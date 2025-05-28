@@ -21,6 +21,10 @@
             <div class="popup-content"><img src="/assets/page2/popup.png" alt=""></div>
             <div class="overlay"></div>
         </div>
+        <div class="popup1 popup">
+            <div class="popup-content"><img src="/assets/page1/popup.png" alt=""></div>
+            <div class="overlay"></div>
+        </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="slide1 swiper-slide" aria-label="인트로 페이지">
@@ -96,7 +100,7 @@
             const swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: { el: '.swiper-pagination', clickable: true },
-            //initialSlide: 2,
+            initialSlide: 1,
             on: {
                 init() {
                     setTimeout(function(){
@@ -107,9 +111,62 @@
                 slideChange() {
                     menuButton.classList.remove('on');
                     nav.classList.remove('show');
+                },
+                slideChangeTransitionEnd: function () {
+                    // 현재 활성 슬라이드 index
+                    const activeIndex = this.realIndex;
+
+                    // 두 번째 슬라이드만 애니메이션 재시작
+                    if (activeIndex === 1) {
+                    startAnimationsWithDelay();
+                    } else {
+                    stopAnimations();
+                    }
                 }
+
             }
             });
+
+            function startAnimationsWithDelay() {
+                // 3초 동안 정지
+                stopAnimations();
+
+                // 3초 뒤에 애니메이션 다시 시작
+                setTimeout(() => {
+                const first = document.querySelector('.tev_home_hand_box_first');
+                const second = document.querySelector('.tev_home_hand_box_second');
+                const third = document.querySelector('.tev_home_hand_box_third');
+                const circle = third.querySelector('.circle');
+
+                first.style.animation = '';
+                first.style.webkitAnimation = '';
+                second.style.animation = '';
+                second.style.webkitAnimation = '';
+                third.style.animation = '';
+                third.style.webkitAnimation = '';
+                circle.style.animation = '';
+                circle.style.webkitAnimation = '';
+                }, 2000);
+            }
+
+            function stopAnimations() {
+                const first = document.querySelector('.tev_home_hand_box_first');
+                const second = document.querySelector('.tev_home_hand_box_second');
+                const third = document.querySelector('.tev_home_hand_box_third');
+                const circle = third.querySelector('.circle');
+
+                first.style.animation = 'none';
+                first.style.webkitAnimation = 'none';
+                second.style.animation = 'none';
+                second.style.webkitAnimation = 'none';
+                third.style.animation = 'none';
+                third.style.webkitAnimation = 'none';
+                circle.style.animation = 'none';
+                circle.style.webkitAnimation = 'none';
+            }
+
+
+            
 
             document.querySelector('.home-button')?.addEventListener('click', () => {
                 swiper.slideTo(0)
@@ -150,12 +207,19 @@
                 nav.classList.toggle('show');
             });
 
-            document.querySelector('.popup-button')?.addEventListener('click', () => {
+            document.querySelector('#popup-button2')?.addEventListener('click', () => {
                 document.querySelector('.popup2').classList.toggle('show');
+            });
+
+            document.querySelector('#popup-button1')?.addEventListener('click', () => {
+                document.querySelector('.popup1').classList.toggle('show');
             });
 
             document.querySelector('.popup2')?.addEventListener('click', () => {
                 document.querySelector('.popup2').classList.remove('show');
+            });
+            document.querySelector('.popup1')?.addEventListener('click', () => {
+                document.querySelector('.popup1').classList.remove('show');
             });
         });
 

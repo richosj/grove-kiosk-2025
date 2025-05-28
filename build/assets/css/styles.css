@@ -1187,6 +1187,21 @@ button.swiper-pagination-bullet {
   margin-bottom: 80px;
   padding: 0;
   padding-top: 160px;
+  position: relative;
+}
+.page-1 .popup-button {
+  position: absolute;
+  top: 499px;
+  right: 215px;
+  width: 242px;
+  height: 170px;
+}
+.page-1 .popup-button .q {
+  position: absolute;
+  top: 36px;
+  left: 107px;
+  display: block;
+  animation: linear click_ani_03 3s infinite;
 }
 .page-1 .content {
   padding-left: 155px;
@@ -1194,22 +1209,24 @@ button.swiper-pagination-bullet {
 .page-1 .item1 {
   margin-bottom: 95px;
 }
-.page-1 .item3 {
-  margin: 118px 0 50px;
+.page-1 .item2 {
+  margin-left: -155px;
+  position: relative;
+  text-align: center;
 }
-.page-1 .item4 {
-  padding-left: 120px;
+.page-1 .item3 {
+  margin: 140px 0 0;
 }
 .page-1 .item5 {
   padding-top: 110px;
   padding-bottom: 40px;
 }
 .page-1 .item7 {
-  margin: 110px 0 40px;
+  margin: 220px 0 70px;
 }
 .page-1 .item8 {
   position: relative;
-  margin-left: 80px;
+  margin-left: 15px;
 }
 
 .page-1 .back {
@@ -1221,12 +1238,12 @@ button.swiper-pagination-bullet {
   left: 0;
 }
 .page-1 .back .flash-1 {
-  left: 972px;
-  top: 57px;
+  left: 975px;
+  top: 96px;
 }
 .page-1 .back .flash-2 {
-  left: 359px;
-  top: 297px;
+  left: 349px;
+  top: 337px;
 }
 .page-1 .content > div {
   transition: all 1s;
@@ -1245,15 +1262,15 @@ button.swiper-pagination-bullet {
   transform: translateY(50px);
 }
 .page-1 .content .item2 .a {
-  left: 0;
+  left: 320px;
   transition-delay: 0.4s;
 }
 .page-1 .content .item2 .b {
-  left: 650px;
+  left: 920px;
   transition-delay: 0.6s;
 }
 .page-1 .content .item2 .c {
-  left: 1300px;
+  left: 1523px;
   transition-delay: 0.8s;
 }
 .page-1 .content .item6 {
